@@ -97,7 +97,7 @@ body, table { font-family: 'Open Sans',sans-serif; font-size: 13px; }
 .site_logo_ru { background: url('../img/logo.png') no-repeat scroll 50% 50% transparent; }
 @media only screen and (max-device-width: 1080px) {
   #site_logo { background-size: 550px 500px; height: 74px; width: 35px; margin-left: -18px; }
-  .site_logo_ru { background: url('icons@2x.png') no-repeat scroll -393px -226px transparent; }
+  .site_logo_ru { background: url('../img/icons@2x.png') no-repeat scroll -393px -226px transparent; }
 }
 #container .content, .popup_open #global_map, .main_header .nav_icon { opacity: 1; transition: opacity 0.5s ease 0s; }
 
@@ -205,13 +205,13 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 .quest_mini_card.enabled:hover { z-index: 10; }
 .quest_mini_card.enabled:hover .unblur { opacity: 1; }
 
-.bottom  { position:absolute; width:100%;bottom:0; left:0; background: url('000.png');padding-bottom: 15px;  }
+.bottom  { position:absolute; width:100%;bottom:0; left:0; background: url('../img/000.png');padding-bottom: 15px;  }
 
 
 .quest_mini_card h2, .city_card h2, .profile_quest_list p.value { font-size: 26px; font-weight: 600; line-height: 1.3; text-decoration: none; margin: 0px; padding: 0px; }
 
 .quest_mini_card .quest_top_info { height: 75px;width: 75px;  float: left; margin: 0 20px 40px 0;  overflow: hidden; }
-.quest_mini_card .gamers_count { padding: 10px;background: url('000.png'); position: absolute; top: 0; left: 0; }
+.quest_mini_card .gamers_count { padding: 10px;background: url('../img/000.png'); position: absolute; top: 0; left: 0; }
 .quest_mini_card .gamers_count p { margin: -4px 0px 0; }
 .quest_mini_card .quest_logo { float: left; width: 75px; height: 75px; position: relative; }
 .quest_mini_card .quest_logo .image, .quest_mini_card .quest_logo .hover { width: 76px; height: 76px; position: absolute; top: 0px; left: 0px; z-index: 1; background-repeat: no-repeat; background-position: 0px 0px; background-size: 155px 75px; transition: opacity 0.3s ease 0s; }
@@ -223,6 +223,7 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 .bottom  .h2  h2 { margin: 0px 0px 0px;float: left;min-width: 100%;text-transform :uppercase; }
 .bottom  .img { width: 65px;height: 65px; position:absolute;bottom:20px;left:20px; }
 
+/*
 .quest1 .bottom  .img {  background: url('1.png')  no-repeat;}
 .quest1 .unblur{  background-image: url('1.jpg');}
 .quest2 .bottom  .img {  background: url('2.png') no-repeat;}
@@ -241,12 +242,12 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 .quest8 .unblur{  background-image: url('8.jpg');}
 .quest9 .bottom  .img {  background: url('9.png') no-repeat;}
 .quest9 .unblur{  background-image: url('9.jpg');}
-
+*/
 
 
 .quest_mini_card .location_info p { margin: 7px 7px 0px; float: left;  }
 .gamers_count .figurines ins, .gamers_count .figurines del { display: inline-block; width: 12px; height: 20px; margin-right: 10px; position: relative; }
-.gamers_count .figurines ins:before, .gamers_count .figurines del:before, .gamers_count .figurines ins:after, .gamers_count .figurines del:after { content: ""; position: absolute; background: url('icons@2x.png') no-repeat scroll -361px -310px / 550px 500px transparent; left: 0px; top: 0px; width: 100%; height: 100%; opacity: 1; transition: opacity 0.3s ease 0s; }
+.gamers_count .figurines ins:before, .gamers_count .figurines del:before, .gamers_count .figurines ins:after, .gamers_count .figurines del:after { content: ""; position: absolute; background: url('../img/icons@2x.png') no-repeat scroll -361px -310px / 550px 500px transparent; left: 0px; top: 0px; width: 100%; height: 100%; opacity: 1; transition: opacity 0.3s ease 0s; }
 .gamers_count .figurines del:after { background-position: -361px -350px; opacity: 0; }
 .gamers_count .figurines ins:before { background-position: -344px -310px; }
 .gamers_count .figurines ins:after { background-position: -344px -350px; opacity: 0; }
@@ -254,7 +255,7 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 .quest_mini_card.enabled:hover .gamers_count .figurines ins:after, .quest_mini_card.enabled:hover .gamers_count .figurines del:after { opacity: 1; }
 .small_icon { padding-left: 23px; position: relative; }
 .small_icon_empty { padding-left: 23px; position: relative; }
-.small_icon:before, .small_icon:after { content: ""; position: absolute; background: url('icons@2x.png') no-repeat scroll -8px -209px / 550px 500px transparent; width: 17px; height: 20px; top: 50%; left: 0px; margin-top: -10px; opacity: 1; transition: opacity 0.3s ease 0s; }
+.small_icon:before, .small_icon:after { content: ""; position: absolute; background: url('../img/icons@2x.png') no-repeat scroll -8px -209px / 550px 500px transparent; width: 17px; height: 20px; top: 50%; left: 0px; margin-top: -10px; opacity: 1; transition: opacity 0.3s ease 0s; }
 .small_icon:after { background-position: -32px -209px; opacity: 0; }
 .quest_mini_card.enabled:hover .small_icon:before { opacity: 0.5; }
 .quest_mini_card.enabled:hover .small_icon:after { opacity: 1; }
@@ -280,14 +281,14 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 @media only screen and (max-device-width: 1080px) {
   #change_lang_button { margin-right: -26px ! important; }
 }
-.small_ru_icon { background: url('icons@2x.png') no-repeat scroll -450px -204px transparent; }
+.small_ru_icon { background: url('../img/icons@2x.png') no-repeat scroll -450px -204px transparent; }
 #select_lang_panel { width: 230px; position: absolute; left: 50%; margin-left: -135px; background-color: rgba(0, 0, 0, 0.9); z-index: 999; top: 164px; padding: 20px; border-radius: 4px; border: 1px solid rgb(255, 255, 255); font-size: 18px; display: none; }
 #select_lang_panel_arrow { background: url('lang_select_brace.png') no-repeat scroll center top / 2000px 26px transparent; height: 26px; margin: -46px 0px 25px -1px; width: 230px; }
 #select_lang_panel ul { list-style: none outside none; padding: 0px; margin: 0px; }
 #select_lang_panel ul li { margin-bottom: 8px; }
-.big_lang_icon_en:before { content: ""; display: block; background: url('icons@2x.png') no-repeat scroll -498px -174px / 550px 500px transparent; width: 41px; height: 41px; float: left; vertical-align: middle; }
-.big_lang_icon_ru:before { content: ""; display: block; background: url('icons@2x.png') no-repeat scroll -498px -222px / 550px 500px transparent; width: 41px; height: 41px; float: left; vertical-align: middle; }
-.big_lang_icon_et:before { content: ""; display: block; background: url('icons@2x.png') no-repeat scroll -498px -270px / 550px 500px transparent; width: 41px; height: 41px; float: left; vertical-align: middle; }
+.big_lang_icon_en:before { content: ""; display: block; background: url('../img/icons@2x.png') no-repeat scroll -498px -174px / 550px 500px transparent; width: 41px; height: 41px; float: left; vertical-align: middle; }
+.big_lang_icon_ru:before { content: ""; display: block; background: url('../img/icons@2x.png') no-repeat scroll -498px -222px / 550px 500px transparent; width: 41px; height: 41px; float: left; vertical-align: middle; }
+.big_lang_icon_et:before { content: ""; display: block; background: url('../img/icons@2x.png') no-repeat scroll -498px -270px / 550px 500px transparent; width: 41px; height: 41px; float: left; vertical-align: middle; }
 .lang_name { margin-left: 10px; padding-top: 20px; vertical-align: middle; }
 .lang_list_item { padding: 8px 0px 16px 8px; border-radius: 15px; margin: 0px; font-weight: normal; color: rgb(255, 255, 255); transition: all 0.2s ease 0s; -moz-box-sizing: border-box; text-decoration: none; border: 1px solid transparent; cursor: pointer; }
 .lang_list_item_selected { background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.5); }
@@ -300,7 +301,7 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 #footer .grey_text { margin-right: 12px; }
  
 .ruble_sign { font-family: 'Rouble'; }
-.rating_star { width: 22px; height: 22px; background: url('icons@2x.png') no-repeat scroll -348px -463px / 550px 500px transparent; padding-right: 4px; display: inline-block; }
+.rating_star { width: 22px; height: 22px; background: url('../img/icons@2x.png') no-repeat scroll -348px -463px / 550px 500px transparent; padding-right: 4px; display: inline-block; }
 .rating_star_full { background-position: -348px -415px ! important; }
 .rating_star_half { background-position: -348px -439px ! important; }
 .sections_header { overflow: hidden; position: relative; z-index: 10; }
