@@ -136,7 +136,7 @@ class User
             $this->db->beginTransaction();
             $result = $sth->execute(
                 array(
-                    ':email' => $username,
+                    ':email' => $email,
                     ':password' => $hashes['hash'],
                     ':salt' => $hashes['salt'],
                 )

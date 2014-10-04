@@ -1,7 +1,7 @@
 <?php
 
-include '../class/auth.class.php';
-include '../class/ajaxRequest.class.php';
+include '/class/auth.class.php';
+include '/class/ajaxRequest.class.php';
 
 //проверить куки
 /*
@@ -51,7 +51,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $auth_result = $user->authorize($email, $password, $remember);
 
         if (!$auth_result) {
-            $this->setFieldError("password", "Invalid username or password");
+            $this->setFieldError("password", "Invalid email or password");
             return;
         }
 
@@ -82,9 +82,9 @@ class AuthorizationAjaxRequest extends AjaxRequest
 
     public function register()
     {
-        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+        if ($_SERVER["REQUEST_METHOD"] !== "GET") {
             // Method Not Allowed
-            http_response_code(405);
+            //http_response_code(405);
             header("Allow: POST");
             $this->setFieldError("main", "Method Not Allowed");
             return;
@@ -93,7 +93,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         setcookie("email", "");
         setcookie("password", "");
 
-        $username = $this->getRequestParam("email");
+        $email = $this->getRequestParam("email");
         //$password1 = $this->getRequestParam("password1");
         //$password2 = $this->getRequestParam("password2");
         $password = $this->getRequestParam("password");
@@ -130,7 +130,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
             $this->setFieldError("email", $e->getMessage());
             return;
         }
-        //$user->authorize($username, $password1);
+        //$user->authorize($email $password1);
 
         $this->message = sprintf("Hello, %s! Thank you for registration.", $email);
         $this->setResponse("redirect", "/");
