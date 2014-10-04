@@ -38,7 +38,7 @@ function ajaxRequest(form) {
     };
     http.send(null);
   } else {
-    //не получил объект XMLhttpRequest
+    alert('Обновите Ваш браузер или попробуйте еще раз в другом.');//не получил объект XMLhttpRequest
   }
   
  return false;
