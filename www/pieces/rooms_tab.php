@@ -4,7 +4,7 @@ include 'rooms/room_list.php';
 echo '<div id="quests_tab" class="tab_page tab_margin">';
 echo '<div class="clearfix main_quest_list">';
 
-foreach ($roomes as $key => $value) {
+foreach ($roomes as $value) {
   $tmp = $value['rstatus'] ? 'enabled' : 'disabled';
 	echo "<div class='quest_mini_card $tmp'>";
   echo '<div class="unblur" style="background-image: url(\''.$value['rimg'].'\');"></div>';
@@ -20,7 +20,7 @@ foreach ($roomes as $key => $value) {
           echo '<del></del>';
         }
       echo '</div>';
-      echo "<p>$min = $max игрока</p>";
+      echo "<p>$min - $max игрока</p>";
       echo '</div>';
       echo '<div class="bottom">';
         echo '<div class="img" style="background: url(\''.$value['rlogo'].'\') no-repeat;"></div>';

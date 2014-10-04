@@ -1,17 +1,25 @@
 //кроссбраузерное получение объекта XMLhttpRequest
-function getXmlHttp(){
-  var xmlhttp;
-  try {
-    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-  } catch (e) {
-    try {
-      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    } catch (E) {
-      xmlhttp = false;
-    }
-  }
-  if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-    xmlhttp = new XMLHttpRequest();
-  }
-  return xmlhttp;
+function createRequestObject()   
+{  
+    try { return new XMLHttpRequest() }  
+    catch(e)   
+    {  
+        try { return new ActiveXObject('Msxml2.XMLHTTP') }  
+        catch(e)   
+        {  
+            try { return new ActiveXObject('Microsoft.XMLHTTP') }  
+            catch(e) { return null; }  
+        }  
+    }  
+}
+function registrate() {
+  
+}
+
+function login() {
+  
+}
+
+function validate() {
+  
 }
