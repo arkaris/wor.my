@@ -25,7 +25,7 @@ function ajaxRequest(form) {
       link += ('&' + inputArr[i].name + '=' + inputArr[i].value);
     }
   }
-  alert(link);
+  alert('запрос к серверу: \n' + link);
   
   var http = createRequestObject();
   if (http) {
@@ -33,7 +33,7 @@ function ajaxRequest(form) {
     
     http.onreadystatechange = function() {
       if (http.readyState == 4) {
-        alert('ответ сервера');
+        alert('ответ сервера: \n' + http.responseText);
       }
     };
     http.send(null);
