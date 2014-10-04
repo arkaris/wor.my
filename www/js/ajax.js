@@ -21,7 +21,9 @@ function ajaxRequest(form) {
   
   var inputArr = form.getElementsByTagName('INPUT');
   for (var i = 0; i < inputArr.length; i++) {
-    link += ('&' + inputArr.name + '=' + inputArr.value);
+    if (inputArr[i].value) {
+      link += ('&' + inputArr[i].name + '=' + inputArr[i].value);
+    }
   }
   alert(link);
   
