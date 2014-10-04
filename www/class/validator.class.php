@@ -43,6 +43,10 @@ class Validator {
         $validDates['email'] = $this->validEmail($dates['email']);
         $validDates['password'] = $this->validPassword($dates['password']);
         break;
+        
+      default:
+        $validDates['act'] = $dates['act'];
+        break;
     }
     
     return $validDates;

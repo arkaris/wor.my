@@ -2,7 +2,7 @@
   <div class="auth_block clearfix">
     <div class="login">
       <div class="local_header"><h3>Вход</h3></div>
-      <form action="/ajax/reg.php?act=login">
+      <form action="/ajax/ajax.php?act=login">
         <div>
           <div class="field">
             <div class="label"><label for="c890_email">Email</label></div>
@@ -29,7 +29,7 @@
       <div class="local_header">
         <h3>Регистрация</h3>
       </div>
-      <form action="/ajax/reg.php?act=reg">
+      <form action="/ajax/ajax.php?act=register">
         <div>
           <div class="field">
             <div class="label">
