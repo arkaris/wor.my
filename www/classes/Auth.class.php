@@ -35,13 +35,13 @@ class User
         return false;
     }
 
-    public function passwordHash($password, $salt = null, $iterations = 1)
+    public function passwordHash($password, $salt = null, $iterations = 10)
     {
         $salt || $salt = uniqid();
-        $hash = $password . md5(sha1($salt));
+        $hash = md5(md5($password . md5(sha1($salt))));
 
         for ($i = 0; $i < $iterations; ++$i) {
-            $hash = md5($hash);
+            $hash = md5(md5(sha1($hash)));
         }
 
         return array('hash' => $hash, 'salt' => $salt);

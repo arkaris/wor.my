@@ -6,7 +6,7 @@ if (!empty($_COOKIE['sid'])) {
   session_id($_COOKIE['sid']);
 }
 session_start();
-require_once 'class/Auth.class.php';
+require_once 'classes/Auth.class.php';
 
 include 'pieces/header.php';
 include 'pieces/message.php';

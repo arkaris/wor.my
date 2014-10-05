@@ -1,7 +1,8 @@
 <?php
+header ("Content-type: text/html; charset=utf-8");
 
-include './class/Auth.class.php';
-include './class/AjaxRequest.class.php';
+include './classes/Auth.class.php';
+include './classes/AjaxRequest.class.php';
 
 if (!empty($_COOKIE['sid'])) {
     // check session id in cookies
@@ -19,9 +20,9 @@ class AuthorizationAjaxRequest extends AjaxRequest
 
     public function login()
     {
-        if ($_SERVER["REQUEST_METHOD"] !== "GET") {
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // Method Not Allowed
-            //http_response_code(405);
+            http_response_code(405);
             header("Allow: POST");
             $this->setFieldError("main", "Method Not Allowed");
             return;
@@ -57,9 +58,9 @@ class AuthorizationAjaxRequest extends AjaxRequest
 
     public function logout()
     {
-        if ($_SERVER["REQUEST_METHOD"] !== "GET") {
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // Method Not Allowed
-            //http_response_code(405);
+            http_response_code(405);
             header("Allow: POST");
             $this->setFieldError("main", "Method Not Allowed");
             return;
@@ -76,9 +77,9 @@ class AuthorizationAjaxRequest extends AjaxRequest
 
     public function register()
     {
-        if ($_SERVER["REQUEST_METHOD"] !== "GET") {
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // Method Not Allowed
-            //http_response_code(405);
+            http_response_code(405);
             header("Allow: POST");
             $this->setFieldError("main", "Method Not Allowed");
             return;

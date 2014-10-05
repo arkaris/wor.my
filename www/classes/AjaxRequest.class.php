@@ -7,12 +7,12 @@
 class AjaxRequest
 {
     public $actions = array();
-    
-    public $status;
+
+    public $data;
     public $code;
     public $message;
-    public $data;
-    
+    public $status;
+
     public function __construct($request)
     {
         $this->request = $request;
@@ -34,7 +34,7 @@ class AjaxRequest
     public function getRequestParam($name)
     {
         if (array_key_exists($name, $this->request)) {
-            return htmlspecialchars(stripslashes(trim($this->request[$name])));
+            return trim($this->request[$name]);
         }
         return null;
     }
