@@ -15,14 +15,12 @@
       <div class="nav_icon nav_icon_left i1">
         <div class="icon"> </div>
         
-        <?php
-        if (empty($_SESSION['login']) || empty($_SESSION['password'])) {
-          echo '<a href="reg.php">Войти</a>';
-        } else {
-          echo '<a href="reg.php?act=logout">Выйти</a>';
-        }
-          
-        ?>
+        <?php if (Auth\User::isAuthorized()): ?>
+        <a href="#">You are already registered!</a>
+        <?php else: ?>
+        <a href="reg.php">Войти</a>
+        <?php endif; ?>
+        
       </div>
       <div class="nav_icon nav_icon_left i2 auth">
         <div class="icon"> </div>

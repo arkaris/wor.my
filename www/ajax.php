@@ -1,17 +1,13 @@
 <?php
 
-include '/class/auth.class.php';
-include '/class/ajaxRequest.class.php';
+include './class/Auth.class.php';
+include './class/AjaxRequest.class.php';
 
-session_start();
-
-//проверить куки
-if (!empty($_COOKIE["email"]) && !empty($_COOKIE["password"])) {
-    // check session in cookies
-    $_SESSION['email'] = $_COOKIE["email"];
-    $_SESSION['password'] = $_COOKIE["password"];
+if (!empty($_COOKIE['sid'])) {
+    // check session id in cookies
+    session_id($_COOKIE['sid']);
 }
-
+session_start();
 
 class AuthorizationAjaxRequest extends AjaxRequest
 {
@@ -30,12 +26,11 @@ class AuthorizationAjaxRequest extends AjaxRequest
             $this->setFieldError("main", "Method Not Allowed");
             return;
         }
-        setcookie("email", "");
-        setcookie("password", "");
+        setcookie("sid", "");
 
         $email = $this->getRequestParam("email");
         $password = $this->getRequestParam("password");
-        $remember = !!$this->getRequestParam("remember");
+        $remember = !!$this->getRequestParam("remember-me");
 
         if (empty($email)) {
             $this->setFieldError("email", "Enter the email");
@@ -62,16 +57,15 @@ class AuthorizationAjaxRequest extends AjaxRequest
 
     public function logout()
     {
-        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+        if ($_SERVER["REQUEST_METHOD"] !== "GET") {
             // Method Not Allowed
-            http_response_code(405);
+            //http_response_code(405);
             header("Allow: POST");
             $this->setFieldError("main", "Method Not Allowed");
             return;
         }
 
-        setcookie("email", "");
-        setcookie("password", "");
+        setcookie("sid", "");
 
         $user = new Auth\User();
         $user->logout();
@@ -90,20 +84,18 @@ class AuthorizationAjaxRequest extends AjaxRequest
             return;
         }
 
-        setcookie("email", "");
-        setcookie("password", "");
+        setcookie("sid", "");
 
         $email = $this->getRequestParam("email");
-        //$password1 = $this->getRequestParam("password1");
-        //$password2 = $this->getRequestParam("password2");
-        $password = $this->getRequestParam("password");
+        $password1 = $this->getRequestParam("password1");
+        $password2 = $this->getRequestParam("password2");
 
         if (empty($email)) {
             $this->setFieldError("email", "Enter the email");
             return;
         }
 
-        /*if (empty($password1)) {
+        if (empty($password1)) {
             $this->setFieldError("password1", "Enter the password");
             return;
         }
@@ -116,21 +108,17 @@ class AuthorizationAjaxRequest extends AjaxRequest
         if ($password1 !== $password2) {
             $this->setFieldError("password2", "Confirm password is not match");
             return;
-        }*/
-        if (empty($password)) {
-            $this->setFieldError("password", "Enter the password");
-            return;
         }
 
         $user = new Auth\User();
 
         try {
-            $new_user = $user->create($email, $password);
+            $new_user_id = $user->create($email, $password1);
         } catch (\Exception $e) {
             $this->setFieldError("email", $e->getMessage());
             return;
         }
-        //$user->authorize($email $password1);
+        $user->authorize($email, $password1);
 
         $this->message = sprintf("Hello, %s! Thank you for registration.", $email);
         $this->setResponse("redirect", "/");

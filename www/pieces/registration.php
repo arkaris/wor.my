@@ -2,7 +2,9 @@
   <div class="auth_block clearfix">
     <div class="login">
       <div class="local_header"><h3>Вход</h3></div>
-      <form action="/ajax.php?act=login">
+      <form class="ajax" method="post" action="/ajax.php">
+        <div class="main-error alert alert-error hide"></div>
+        <input type="hidden" name="act" value="login">
         <div>
           <div class="field">
             <div class="label"><label for="c890_email">Email</label></div>
@@ -30,6 +32,8 @@
         <h3>Регистрация</h3>
       </div>
       <form action="/ajax.php?act=register">
+        <div class="main-error alert alert-error hide"></div>
+        <input type="hidden" name="act" value="register">
         <div>
           <div class="field">
             <div class="label">
@@ -67,7 +71,17 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input name="password" id="c875_password" type="password"></span>
+                <input name="password1" id="c875_password" type="password"></span>
+              <span class="field_error" data-error=""></span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="label">
+              <label for="c875_password">Пароль</label>
+            </div>
+            <div class="input">
+              <span class="round_input" data-editor="">
+                <input name="password2" id="c875_password" type="password"></span>
               <span class="field_error" data-error=""></span>
             </div>
           </div>
