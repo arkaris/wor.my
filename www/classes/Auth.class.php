@@ -9,7 +9,7 @@ class User
     private $db;
     private $user_id;
 
-    private $db_host = "localhost";
+    private $db_host = "localhost";//worldofroomsru.ipagemysql.com
     private $db_name = "wor";
     private $db_user = "arkaris";
     private $db_pass = "testp";
