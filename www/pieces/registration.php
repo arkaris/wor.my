@@ -82,5 +82,4 @@
   <div class="profile_quest_list"></div>
 </div>
 <?php
-//'HTTP_REFERER'
 ?>

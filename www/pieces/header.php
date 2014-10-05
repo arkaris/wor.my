@@ -14,7 +14,15 @@
     <div class="header main_header clearfix">
       <div class="nav_icon nav_icon_left i1">
         <div class="icon"> </div>
-        <a href="reg.php">Войти</a>
+        
+        <?php
+        if (empty($_SESSION['login']) || empty($_SESSION['password'])) {
+          echo '<a href="reg.php">Войти</a>';
+        } else {
+          echo '<a href="reg.php?act=logout">Выйти</a>';
+        }
+          
+        ?>
       </div>
       <div class="nav_icon nav_icon_left i2 auth">
         <div class="icon"> </div>
