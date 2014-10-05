@@ -3,15 +3,15 @@
 include '/class/auth.class.php';
 include '/class/ajaxRequest.class.php';
 
-//проверить куки
+session_start();
 /*
-if (!empty($_SESSION["email"]) && !empty($_SESSION["password"])) {
+//проверить куки
+if (!empty($_COOKIE["email"]) && !empty($_COOKIE["password"])) {
     // check session in cookies
-    session_id($_COOKIE['sid']);
+    $_SESSION['email'] = $_COOKIE["email"];
+    $_SESSION['password'] = $_COOKIE["password"];
 }
 */
-
-session_start();
 
 class AuthorizationAjaxRequest extends AjaxRequest
 {
