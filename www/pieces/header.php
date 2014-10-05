@@ -16,7 +16,13 @@
         <div class="icon"> </div>
         
         <?php if (Auth\User::isAuthorized()): ?>
-        <a href="#">You are already registered!</a>
+        <a onclick = logoutButton.click()>Выйти</a>
+        <form class="ajax" method="post" action="./ajax.php">
+          <input type="hidden" name="act" value="logout">
+          <div class="form-actions">
+            <button class="btn btn-large btn-primary" type="submit" id="logoutButton" style="display:none;"></button>
+          </div>
+        </form>
         <?php else: ?>
         <a href="reg.php">Войти</a>
         <?php endif; ?>
