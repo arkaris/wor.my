@@ -12,18 +12,17 @@
 <body>
   <div id="container">
     <div class="header main_header clearfix">
-      <div class="nav_icon nav_icon_left i1">
+      <?php if (Auth\User::isAuthorized()): ?>
+      <div class="nav_icon nav_icon_left i1" onclick = logoutButton.click()>
         <div class="icon"> </div>
-        
-        <?php if (Auth\User::isAuthorized()): ?>
-        <a onclick = logoutButton.click()>Выйти</a>
+        <a>Выйти</a>
         <form class="ajax" method="post" action="./ajax.php">
           <input type="hidden" name="act" value="logout">
-          <div class="form-actions">
-            <button class="btn btn-large btn-primary" type="submit" id="logoutButton" style="display:none;"></button>
-          </div>
+          <button type="submit" id="logoutButton" style="display:none;"></button>
         </form>
-        <?php else: ?>
+      <?php else: ?>
+      <div class="nav_icon nav_icon_left i1">
+        <div class="icon"> </div>
         <a href="reg.php">Войти</a>
         <?php endif; ?>
         

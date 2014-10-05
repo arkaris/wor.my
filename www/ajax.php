@@ -22,7 +22,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // Method Not Allowed
-            http_response_code(405);
+            //http_response_code(405);
             header("Allow: POST");
             $this->setFieldError("main", "Method Not Allowed");
             return;
@@ -60,7 +60,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // Method Not Allowed
-            http_response_code(405);
+            //http_response_code(405);
             header("Allow: POST");
             $this->setFieldError("main", "Method Not Allowed");
             return;
@@ -71,7 +71,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $user = new Auth\User();
         $user->logout();
 
-        $this->setResponse("redirect", ".");
+        $this->setResponse("redirect", "/reg.php");
         $this->status = "ok";
     }
 
@@ -79,18 +79,25 @@ class AuthorizationAjaxRequest extends AjaxRequest
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // Method Not Allowed
-            http_response_code(405);
+            //http_response_code(405);
             header("Allow: POST");
             $this->setFieldError("main", "Method Not Allowed");
             return;
         }
 
         setcookie("sid", "");
-
+        
+        $username = $this->getRequestParam("username");
         $email = $this->getRequestParam("email");
+        $phone = $this->getRequestParam("phone");
         $password1 = $this->getRequestParam("password1");
         $password2 = $this->getRequestParam("password2");
-
+        
+        if (empty($username)) {
+            $this->setFieldError("username", "Enter the username");
+            return;
+        }
+        
         if (empty($email)) {
             $this->setFieldError("email", "Enter the email");
             return;
@@ -114,7 +121,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $user = new Auth\User();
 
         try {
-            $new_user_id = $user->create($email, $password1);
+            $new_user_id = $user->create($email, $password1, $username, $phone);
         } catch (\Exception $e) {
             $this->setFieldError("email", $e->getMessage());
             return;

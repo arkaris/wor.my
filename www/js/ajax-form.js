@@ -89,20 +89,25 @@
 
         validate: function($form) {
             var $fields = $form.find(':input'),
+                $messages = $form.find("[data-error]"),
                 isValid = true,
                 $e;
-
+/*
             $fields.each(function(i, e) {
                 $(e).removeClass('error-message');
             });
-
+*/
+            $messages.each(function(i, e) {
+              $(e).html("");
+            });
+/*
             $form.find('.error-message').remove();
-
+*/
             $fields.each(function(i, e) {
                 if (e.hasAttribute('required')) {
                     $e = $(e);
                     if (!$e.val().trim()) {
-                        $e.addClass('error-message').focus();
+                        $e/*.addClass('error-message')*/.focus();
                         isValid = false;
                         return isValid;
                     }
@@ -166,10 +171,10 @@
                     }
                 }
             } else if (data.status === 'err') {
-                var $mainErrorContainer = $form.find('.main-error');
+                var $mainErrorContainer = $form.find("[data-error=" + data.code + "]");
                 if (data.code === 'main') {
                     if ($mainErrorContainer !== null) {
-                        $mainErrorContainer.html('<p class="error">' + data.message + '</p>');
+                        $mainErrorContainer.html(data.message);
                     } else {
                         $form.append('<p class="error">' + data.message + '</p>');
                     }
