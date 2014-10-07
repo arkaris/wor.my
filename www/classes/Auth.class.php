@@ -100,7 +100,7 @@ class User
         }
     }
 
-    public function saveSession($remember = false, $http_only = true, $days = 7)
+    public function saveSession($remember = true, $http_only = false, $days = 7)
     {
         $_SESSION["user_id"] = $this->user_id;
 

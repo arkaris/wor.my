@@ -1,4 +1,6 @@
 <?php
+//ini_set('display_errors',1);
+//error_reporting(E_ALL);
 //установка русской кодировки
 header ("Content-type: text/html; charset=utf-8");
 if (!empty($_COOKIE['sid'])) {
