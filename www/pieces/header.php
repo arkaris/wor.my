@@ -29,16 +29,16 @@
       </div>
       <div class="nav_icon nav_icon_left i2 auth">
         <div class="icon"> </div>
-        <a href="/phone.html">Позвоните нам</a>
+        <a href="./call_us.php">Позвоните нам</a>
       </div>
       <div id="site_logo" class="site_logo_ru"> <a href="./"></a> </div>
       <div class="nav_icon nav_icon_right i3">
         <div class="icon"> </div>
-        <a href="/gift.html">сертификаты</a>
+        <a href="./certificate.php">сертификаты</a>
       </div>
       <div class="nav_icon nav_icon_right i4">
         <div class="icon"> </div>
-        <a href="/franchise.html">Франшиза</a>
+        <a href="./franchise.php">Франшиза</a>
       </div>
     </div>
     <div class="content">
