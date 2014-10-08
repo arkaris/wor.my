@@ -33,7 +33,7 @@
       </div>
       <div class="nav_icon nav_icon_right i4">
         <div class="icon"> </div>
-        <a href="/franchise.html">Франшиза</a>
+        <a href="./franchise.php">Франшиза</a>
       </div>
     </div>
     <div class="content">
