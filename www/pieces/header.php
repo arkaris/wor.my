@@ -29,11 +29,7 @@
       </div>
       <div class="nav_icon nav_icon_left i2 auth">
         <div class="icon"> </div>
-<<<<<<< HEAD
         <a href="./call_us.php">Позвоните нам</a>
-=======
-        <a href="./call_as.php">Позвоните нам</a>
->>>>>>> 49f72b9091a7acf89da58da575d472c9de7768e1
       </div>
       <div id="site_logo" class="site_logo_ru"> <a href="./"></a> </div>
       <div class="nav_icon nav_icon_right i3">
