@@ -12,6 +12,6 @@ require_once 'classes/Auth.class.php';
 include 'pieces/header.php'; 
 include 'pieces/message.php'; 
 include 'pieces/second_navigation.php'; 
-test soon
+echo 'test soon';
 include 'pieces/footer.php'; 
 ?> 

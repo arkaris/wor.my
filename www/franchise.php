@@ -14,6 +14,6 @@ include 'pieces/message.php';
 include 'pieces/second_navigation.php';
 
 
-test soon
+//test soon
 include 'pieces/footer.php'; 
 ?> 
