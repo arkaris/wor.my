@@ -1,5 +1,5 @@
 <?php
-include 'rooms/room_list.php';
+include './rooms/room_list.php';
 
 echo '<div id="quests_tab" class="tab_page tab_margin">';
 echo '<div class="clearfix main_quest_list">';

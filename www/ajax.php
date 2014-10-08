@@ -1,8 +1,9 @@
 <?php
 header ("Content-type: text/html; charset=utf-8");
 
-include './classes/Auth.class.php';
-include './classes/AjaxRequest.class.php';
+require_once './classes/EasyMail.class.php';
+require_once './classes/Auth.class.php';
+require_once './classes/AjaxRequest.class.php';
 
 if (!empty($_COOKIE['sid'])) {
     // check session id in cookies
@@ -71,7 +72,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $user = new Auth\User();
         $user->logout();
 
-        $this->setResponse("redirect", "/reg.php");
+        $this->setResponse("redirect", "./reg.php");
         $this->status = "ok";
     }
 
@@ -129,7 +130,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         //$user->authorize($email, $password1);
 
         $this->message = sprintf("Hello, %s! Thank you for registration.", $email);
-        $this->setResponse("redirect", "/");
+        $this->setResponse("redirect", "./confirm.php");
         $this->status = "ok";
     }
 }

@@ -6,19 +6,15 @@ class EasyMail
   private $to;
   private $subject;
   private $message;
-  private $headers = "Content-type: text/html; charset=utf-8\r\n From: Birthday Reminder <birthday@example.com>\r\n";
-  private $from = 'worldofrooms.ru';
+  private $headerz = "Content-type: text/html; charset=utf-8";
+  //private $from = 'worldofrooms.ru';
   public $result = false;
   
   public function __construct($sub, $param) {
-    //$to<=$param.to
-    //$subject<-$param.sub
-    //$message<-$param.sub+$param.hash
-    //$headers
     
     switch ($sub) {
       case 'confirm_email':
-        confirm_email($param);
+        $this->confirm_email($param);
         break;
         
       case 'test':
@@ -32,7 +28,21 @@ class EasyMail
   }
   
   private function confirm_email($param) {
-    
+    $this->to = $param['to'];
+    $this->subject = 'subject';
+    $link = 'arkaris.ru/wor/confirm.php?email='.$param['to'].'&hash='.$param['hash_code'];
+    $this->message = "
+    <html> 
+      <head> 
+          <title>title</title> 
+      </head> 
+      <body> 
+          <p>Hello, world!!!</p>
+          <p>Салют!</p>
+          <a href=$link>Подтверждение регистрации</p>
+      </body> 
+    </html>";
+    return true;
   }
   
   private function test($param) {
@@ -52,13 +62,8 @@ class EasyMail
   }
   
   public function send() {
-    echo '$to: '.$this->to.'<br>';
-    echo '$subject: '.$this->subject.'<br>';
-    echo '$message: '.$this->message.'<br>';
-    echo '$headers: '.$this->headers.'<br>';
-    
-    $result = mail($this->to, $this->subject, $this->message, $this->headers);
+    $result = mail($this->to, $this->subject, $this->message, $this->headerz ."\r\n ".$this->from);
     return $result;
   }
 }
-?> 
+?>

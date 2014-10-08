@@ -1,5 +1,4 @@
 <?php
-
 namespace Auth;
 
 class User
@@ -13,7 +12,12 @@ class User
     private $db_name = "wor";
     private $db_user = "arkaris";
     private $db_pass = "testp";
-
+/*
+    private $db_host = "localhost";//worldofroomsru.ipagemysql.com
+    private $db_name = "grafin2a_wor";
+    private $db_user = "grafin2a_wor";
+    private $db_pass = "flame111";
+*/
     private $is_authorized = false;
 
     public function __construct($email = null, $password = null)
@@ -33,6 +37,37 @@ class User
             return (bool) $_SESSION["user_id"];
         }
         return false;
+    }
+    
+    public function isConfirmed($hash_code) {
+      
+        $query = "update users set hash = null where email = :email and hash = :hash limit 1";
+        $sth = $this->db->prepare($query);
+      
+        try {
+            $this->db->beginTransaction();
+            $result = $sth->execute(
+                array(
+                    ":email" => $this->email,
+                    ":hash" => $hash_code
+                )
+            );
+            
+            $this->db->commit();
+            
+        } catch (\PDOException $e) {
+            $this->db->rollback();
+            echo "Database error: " . $e->getMessage();
+            die();
+        }
+
+        if (!$result) {
+            $info = $sth->errorInfo();
+            printf("Database error %d %s", $info[1], $info[2]);
+            die();
+        }
+        
+        return $result;
     }
 
     public function passwordHash($password, $salt = null, $iterations = 10)
@@ -123,11 +158,19 @@ class User
         if ($user_exists) {
             throw new \Exception("User exists: " . $email, 1);
         }
-
-        $query = "insert into users (email, password, salt, username, phone)
-            values (:email, :password, :salt, :username, :phone)";
+        
+        $query = 'insert into users (email, password, salt, username, hash, phone)
+            values (:email, :password, :salt, :username, :hash, :phone)';
         $hashes = $this->passwordHash($password);
         $sth = $this->db->prepare($query);
+        
+        $hash_code = rand(100000000, 999999999);
+        $sub = 'confirm_email';
+        $mailParams = array(
+          to => 'myachkovd@mail.ru',
+          hash_code => $hash_code
+        );
+        $mail = new \Mail\EasyMail($sub, $mailParams);
 
         try {
             $this->db->beginTransaction();
@@ -137,10 +180,13 @@ class User
                     ':password' => $hashes['hash'],
                     ':salt' => $hashes['salt'],
                     ':username' => $username,
+                    ':hash' => $hash_code,
                     ':phone' => $phone
                 )
             );
+            
             $this->db->commit();
+            
         } catch (\PDOException $e) {
             $this->db->rollback();
             echo "Database error: " . $e->getMessage();
@@ -151,7 +197,12 @@ class User
             $info = $sth->errorInfo();
             printf("Database error %d %s", $info[1], $info[2]);
             die();
-        } 
+        }
+        
+        if (!$mail->send()) {
+          $this->db->rollback();
+          echo "Can't send email to: " . $email;
+        }
 
         return $result;
     }

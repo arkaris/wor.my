@@ -23,7 +23,7 @@
       <?php else: ?>
       <div class="nav_icon nav_icon_left i1">
         <div class="icon"> </div>
-        <a href="reg.php">Войти</a>
+        <a href="./reg.php">Войти</a>
         <?php endif; ?>
         
       </div>
@@ -31,7 +31,7 @@
         <div class="icon"> </div>
         <a href="/phone.html">Позвоните нам</a>
       </div>
-      <div id="site_logo" class="site_logo_ru"> <a href="/"></a> </div>
+      <div id="site_logo" class="site_logo_ru"> <a href="./"></a> </div>
       <div class="nav_icon nav_icon_right i3">
         <div class="icon"> </div>
         <a href="/gift.html">сертификаты</a>

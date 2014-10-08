@@ -2,7 +2,7 @@
   <div class="auth_block clearfix">
     <div class="login">
       <div class="local_header"><h3>Вход</h3></div>
-      <form class="ajax" method="post" action="/ajax.php">
+      <form class="ajax" method="post" action="./ajax.php">
         <input type="hidden" name="act" value="login">
         <div>
           <div class="field">
@@ -30,7 +30,7 @@
       <div class="local_header">
         <h3>Регистрация</h3>
       </div>
-      <form class="ajax" method="post" action="/ajax.php">
+      <form class="ajax" method="post" action="./ajax.php">
         <div class="main-error alert alert-error hide"></div>
         <input type="hidden" name="act" value="register">
         <div>
