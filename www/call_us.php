@@ -11,5 +11,6 @@ require_once 'classes/Auth.class.php';
 include 'pieces/header.php'; 
 include 'pieces/message.php'; 
 include 'pieces/second_navigation.php'; 
+<b> 89853674571 </b>
 include 'pieces/footer.php'; 
 ?> 
