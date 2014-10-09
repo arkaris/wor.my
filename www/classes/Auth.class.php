@@ -39,7 +39,7 @@ class User
         return false;
     }
     
-    public function isConfirmed($hash_code) {
+    public function confirm($hash_code) {
       
         $query = "update users set hash = null where email = :email and hash = :hash limit 1";
         $sth = $this->db->prepare($query);
@@ -100,7 +100,7 @@ class User
     public function authorize($email, $password, $remember=false)
     {
         $query = "select id, email from users where
-            email = :email and password = :password limit 1";
+            email = :email and password = :password and hash is null limit 1";
         $sth = $this->db->prepare($query);
         $salt = $this->getSalt($email);
 
