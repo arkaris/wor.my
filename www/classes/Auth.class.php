@@ -167,7 +167,7 @@ class User
         $hash_code = rand(100000000, 999999999);
         $sub = 'confirm_email';
         $mailParams = array(
-          to => 'myachkovd@mail.ru',
+          to => $email,
           hash_code => $hash_code
         );
         $mail = new \Mail\EasyMail($sub, $mailParams);
