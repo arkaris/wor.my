@@ -275,7 +275,7 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
   .main_quest_list .quest_mini_card { float: none; width: auto; }
 }
 @media not all, only screen and (min-resolution: 144dpi) {
-  .message { background-image: url('brace@2x.png'); }
+  /.message { /*background-image: url('../img/brace@2x.png');*/ }
 }
 #change_lang_button { float: right; margin-right: -36px; cursor: pointer; width: 26px; height: 26px; background-size: 550px 500px; }
 @media only screen and (max-device-width: 1080px) {

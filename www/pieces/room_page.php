@@ -1,243 +1,76 @@
-<!DOCTYPE html>
-<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" prefix="og: http://ogp.me/ns#" style="">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>quest</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=900, maximum-scale=0.8, minimum-scale=0.2, user-scalable=yes">
-
-
-    
-    
-    
-
-
-        
-
-    
-<link rel="stylesheet" type="text/css" href="index2.css" media="all">
-</head>
-<body>
-<!--
- 
-        <div style="background-color: rgb(229, 227, 223); overflow: hidden;" id="global_map">
-		
-		<div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;">
-		  <div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url('openhand_8_8.cur'), default;">
-		    <div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%;">
-		      <div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;">
-		        <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
-		          <div style="position: absolute; left: 0px; top: 0px; z-index: 1;">
-		            <div style="width: 256px; height: 256px; position: absolute; left: -67px; top: -130px;"></div>
-		          </div>
-		        </div>
-		      </div>
-		      <div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div>
-		      <div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div>
-		      <div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"></div>
-		      <div style="position: absolute; z-index: 0; left: 0px; top: 0px;">
-		        <div style="overflow: hidden;"></div>
-		      </div>
-		      <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
-		        <div style="position: absolute; left: 0px; top: 0px; z-index: 1;">
-		          <div style="width: 256px; height: 256px; position: absolute; left: -67px; top: -130px; opacity: 1; transition: opacity 200ms ease-out 0s;">
-		            <img draggable="false" src="vt" style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;">
-		          </div>
-		        </div>
-		      </div>
-		    </div>
-		    <div style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%;"></div>
-		    <div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%;">
-		      <div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div>
-		      <div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div>
-		      <div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div>
-		      <div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div>
-		    </div>
-		  </div>
-		  <div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;">
-		    <a title="Нажмите, чтобы отобразить эту область в Картах Google" href="http://maps.google.com/maps?ll=55.795,37.4911&amp;z=14&amp;t=m&amp;hl=ru-RU&amp;gl=US&amp;mapclient=apiv3" target="_top" style="position: static; overflow: visible; float: none; display: inline;">
-		      <div style="width: 62px; height: 26px; cursor: pointer;">
-		        <img draggable="false" src="google_white2.png" style="position: absolute; left: 0px; top: 0px; width: 62px; height: 26px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;">
-		      </div>
-		    </a>
-		  </div>
-		  <div style="z-index: 1000001; position: absolute; right: 0px; bottom: 0px; width: 12px;" class="gmnoprint">
-		    <div class="gm-style-cc" style="-moz-user-select: none;" draggable="false">
-		      <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-		        <div style="width: 1px;"></div>
-		        <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
-		      </div>
-		      <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;">
-		        <a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Картографические данные</a>
-		        <span style="display: none;"></span>
-		      </div>
-		    </div>
-		  </div>
-		  <div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto,Arial,sans-serif; color: rgb(34, 34, 34); box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); z-index: 10000002; display: none; width: 0px; height: 0px; position: absolute; left: 5px; top: 5px;">
-		    <div style="padding: 0px 0px 10px; font-size: 16px;">Картографические данные</div>
-		    <div style="font-size: 13px;"></div>
-		    <div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;">
-		      <img draggable="false" src="mapcnt3.png" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;">
-		    </div>
-		  </div>
-		  <div style="position: absolute; right: 0px; bottom: 0px;" class="gmnoscreen">
-		    <div style="font-family: Roboto,Arial,sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);"></div>
-		  </div>
-		  <div draggable="false" style="z-index: 1000001; position: absolute; -moz-user-select: none; right: 0px; bottom: 0px;" class="gmnoprint gm-style-cc">
-		    <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-		      <div style="width: 1px;"></div>
-		      <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
-		    </div>
-		    <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;">
-		      <a target="_top" href="http://www.google.com/intl/ru-RU_US/help/terms_maps.html" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Условия использования</a>
-		    </div>
-		  </div>
-		  <div class="gm-style-cc" style="-moz-user-select: none; display: none; position: absolute; right: 0px; bottom: 0px;" draggable="false">
-		    <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-		      <div style="width: 1px;"></div>
-		      <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
-		    </div>
-		    <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;">
-		      <a href="http://maps.google.com/maps?ll=55.795,37.4911&amp;z=14&amp;t=m&amp;hl=ru-RU&amp;gl=US&amp;mapclient=apiv3&amp;skstate=action:mps_dialog$apiref:1&amp;output=classic" style="font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;" title="Сообщить об ошибке на карте или снимке" target="_new">Сообщить об ошибке на карте</a>
-		    </div>
-		  </div>
-		  <div controlheight="138" controlwidth="25" draggable="false" style="margin: 5px; -moz-user-select: none; position: absolute; left: 0px; top: -74px;" class="gmnoprint">
-		    <div controlheight="138" controlwidth="25" style="position: absolute; left: 0px; top: 0px;" class="gmnoprint">
-		      <div title="Увеличить" style="width: 23px; height: 24px; overflow: hidden; position: relative; cursor: pointer; z-index: 1;">
-		        <img draggable="false" src="mapcnt3.png" style="position: absolute; left: -17px; top: -400px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;">
-		      </div>
-		      <div title="Нажмите для изменения масштаба" style="width: 25px; height: 90px; overflow: hidden; position: relative; cursor: pointer; top: -4px;">
-		        <img draggable="false" src="mapcnt3.png" style="position: absolute; left: -17px; top: -87px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;">
-		      </div>
-		      <div title="Перетащить для изменения масштаба" style="width: 21px; height: 14px; overflow: hidden; position: absolute; transition: top 0.25s ease 0s; z-index: 2; cursor: url('openhand_8_8.cur'), default; left: 2px; top: 52px;">
-		        <img draggable="false" src="mapcnt3.png" style="position: absolute; left: 0px; top: -384px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;">
-		      </div>
-		      <div title="Уменьшить" style="width: 23px; height: 23px; overflow: hidden; position: relative; cursor: pointer; top: -4px; z-index: 3;">
-		        <img draggable="false" src="mapcnt3.png" style="position: absolute; left: -17px; top: -361px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;">
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		
-		
+<div id="quest_page">
+  <div class="quest_card">
+    <div class="kom_card">
+      <p>Фотографии комнат</p>
+      <?php
+      foreach ($room['rphoto'] as $value) {
+        echo '<img src="'.$value.'" alt=""/>';
+      }
+      ?>
+    </div>
+    <?php
+    echo '<img src="'.$room['rimgbig'].'" width="100%">';
+    ?>
+    <div class="quest_card_info_mobile">
+      <?php
+      echo '<img class="big-ico" src="'.$room['rlogobig'].'" alt=""/>';
+      echo '<h1>'.$room['rname'].'</h1>';
+      echo '<p><span class="small_icon phone">'.$room['rphone'].'</span></p>';
+      echo '<p><a href="mailto:'.$room['rmail'].'"><span class="small_icon email">'.$room['rmail'].'</span></a></p>';
+      echo '<p><span class="small_icon metro">'.$room['rmetro'].'</span></p>';
+      echo '<p><span class="small_icon address">'.$room['raddres'].'</span></p>';
+      ?>
+    </div>
+    <div class="quest_card_info">
+      <span class="hide_for_mobile">
+        <?php
+        echo '<img class="big-ico" src="'.$room['rlogobig'].'" alt=""/>';
+        echo '<h1>'.$room['rname'].'</h1>';
+        echo '<p class="description bot">'.$room['rdesc'].'</p>';
+        echo '<p class="description"><span class="small_icon phone">'.$room['rphone'].'</span></p>';
+        echo '<p class="description"><a href="mailto:'.$room['rmail'].
+          '"><span class="small_icon email">'.$room['rmail'].'</span></a></p>';
+        echo '<p class="description"><span class="small_icon metro">'.$room['rmetro'].'</span></p>';
+        echo '<p class="description"><span class="small_icon address">'.$room['raddres'].'</span></p>';
+        ?>
+      </span>
+    </div>
+    <div class="mini_map">
+      <?php
+      echo '<img src="'.$room['rmapmini'].'" height="130" width="130">';
+      ?>
+    </div> 
+  </div>
+  <div class="bottom-gamers">
+    <div class=" bottom-box gamers_count">
+      <?php
+      echo '<div class="figurines">';
+        $min = $room['rmin'];
+        $max = $room['rmax'];
+        for ($i=0; $i < $min; $i++) { 
+          echo '<ins></ins>';
+        }
+        for ($i; $i < $max; $i++) { 
+          echo '<del></del>';
+        }
+      echo '</div>';
+      echo "<p>$min - $max игрока</p>";
+      ?>
+    </div>
+    <div class="bottom-box time_shit">
+    <?php echo '<p>Длительность квеста: '.$room['continuance'].'</p>'; ?>
+    </div>
+    <div class="bottom-box more_shit">
+    <?php echo '<p>Минимальный возраст участников: <br/>'.$room['age'].'</p>';?>
+    </div>
   </div>
 
--->
-
-        <div id="container">
-<div class="header main_header clearfix">
-  <div class="nav_icon nav_icon_left i1">
-    <div class="icon"> </div>
-    <a href="/reg.html">Войти</a> </div>
-  <div class="nav_icon nav_icon_left i2 auth">
-    <div class="icon"> </div>
-    <a href="/phone.html">Позвоните нам</a> </div>
-  <div id="site_logo" class="site_logo_ru"> <a href="/index.html"></a> </div>
-  <div class="nav_icon nav_icon_right i3">
-    <div class="icon"> </div>
-    <a href="/gift.html">сертификаты</a> </div>
-  <div class="nav_icon nav_icon_right i4">
-    <div class="icon"> </div>
-    <a href="/franchise.html">Франшиза</a> </div>
-</div>
-
-            <div class="content">
-
-              
-
-    <div id="quest_page">
-
-        <div class="quest_card">
-<div class="kom_card">
-<p>Фотографии комнат</p>
-<img src="k1.jpg" alt=""/>
-<img src="k2.jpg" alt=""/>
-<img src="k3.jpg" alt=""/>
- 
-</div>
-            
-                <img src="8bf852e3d8ed71f3e0279bf9534bb0c0.jpg" width="100%">
-            
-
-
-            <div class="quest_card_info_mobile">
-<img class="big-ico" src="big-ico-1.png" alt=""/>
-                 <h1>Бункер</h1>
-
-                <p><span class="small_icon phone"> +7-495-761-71-58</span></p>
-                <p><a href="mailto:white@phobia.ru"><span class="small_icon email">white@phobia.ru</span></a></p>
-                
-                    <p><span class="small_icon metro">Беговая</span></p>
-                
-                <p><span class="small_icon address">Хорошевское шоссе, д. 32</span></p>
-                
-
-            </div>
-
-            <div class="quest_card_info">
-
-            <span class="hide_for_mobile">
-
- 
-<img class="big-ico" src="big-ico-1.png" alt=""/>
- <h1>Бункер</h1>
-
-                <p class="description bot">Постапокалиптическое приключение в&nbsp;стиле Фоллаута. Мир просыпается после ядерной катастрофы, вы&nbsp;— последнее поколение выживших в&nbsp;подземном убежище людей. Пришло время выбираться наружу.</p>
-              
-
-                <p  class="description"><span class="small_icon phone"> +7-495-761-71-58</span></p>
-                <p  class="description"><a href="mailto:white@phobia.ru"><span class="small_icon email">white@phobia.ru</span></a></p>
-                
-                <p  class="description"><span class="small_icon metro">Беговая</span></p>
-                
-                <p  class="description"><span class="small_icon address">Хорошевское шоссе, д. 32</span></p>
-                
-             
-
-            </span>
-
-			
-
-            </div>
-
- 
- 
-			
-                <div class="mini_map">
-                    <img src="staticmap" height="130" width="130">
-                </div>	
-
-
-        </div>
-
-
- 			<div class="bottom-gamers">			
-	<div class=" bottom-box gamers_count">
-		<div class="figurines"><ins></ins><ins></ins><del></del><del></del></div>
-		<p>2 — 4 игрока</p>
-	</div>
-	
-	<div class="bottom-box time_shit">
-	<p>Длительность квеста: 60 минут</p>
-	</div>
-	
-	<div class="bottom-box more_shit">
-		<p>Минимальный возраст участников: <br/>
-		от 10 лет с родителями, от 14 без</p>
-	</div>
-</div>
-
-        <div id="schedule_tab" class="tab_page">
-
-          
-
-            <div data-baron-h="inited" id="schedule">
-                <div class="timeslots_header">
-                  
-                    <div class="header_lines"><div class="day_line header_line holiday">
+  <div id="schedule_tab" class="tab_page">
+    <div data-baron-h="inited" id="schedule">
+      <div class="timeslots_header">
+        <div class="header_lines">
+        
+        <div class="day_line header_line holiday">
             <h3>27 сентября</h3>
             <p>суббота</p>
         </div><div class="day_line header_line holiday">
@@ -285,7 +118,9 @@
         </div><div class="day_line header_line holiday">
             <h3>12 октября</h3>
             <p>воскресенье</p>
-        </div></div>
+        </div>
+        
+        </div>
                 </div>
                 <div class="schedule_body">
                     <div style="height: 1147px;" class="scroller">
@@ -293,7 +128,7 @@
                             <div class="scroller_inner">
                                  
                                 <div class="schedule_lines"><div class="quest_schedule"><div class="timeslots"><div style="left: 0%; width: 4.21%;" class="slot round_button booked">00:00</div><div style="left: 5.26%; width: 4.21%;" class="slot round_button booked">01:15</div><div style="left: 10.53%; width: 4.21%;" class="slot round_button booked">02:30</div><div style="left: 16.84%; width: 4.21%;" class="slot round_button booked">04:00</div><div style="left: 22.11%; width: 4.21%;" class="slot round_button booked">05:15</div><div style="left: 27.37%; width: 4.21%;" class="slot round_button booked">06:30</div><div style="left: 32.63%; width: 4.21%;" class="slot round_button booked">07:45</div><div style="left: 37.89%; width: 4.21%;" class="slot round_button booked">09:00</div><div style="left: 43.16%; width: 4.21%;" class="slot round_button booked">10:15</div><div style="left: 48.42%; width: 4.21%;" class="slot round_button booked">11:30</div><div style="left: 53.68%; width: 4.21%;" class="slot round_button booked">12:45</div><div style="left: 58.95%; width: 4.21%;" class="slot round_button booked">14:00</div><div style="left: 64.21%; width: 4.21%;" class="slot round_button booked">15:15</div><div style="left: 69.47%; width: 4.21%;" class="slot round_button booked">16:30</div><div style="left: 74.74%; width: 4.21%;" class="slot round_button booked">17:45</div><div style="left: 80%; width: 4.21%;" class="slot round_button booked">19:00</div><div style="left: 85.26%; width: 4.21%;" class="slot round_button booked">20:15</div><div style="left: 90.53%; width: 4.21%;" class="slot round_button booked">21:30</div><div style="left: 95.79%; width: 4.21%;" class="slot round_button booked">22:45</div></div>
-								
+                
 </div><div class="quest_schedule"><div class="timeslots"><div style="left: 0%; width: 4.21%;" class="slot round_button booked">00:00</div><div style="left: 5.26%; width: 4.21%;" class="slot round_button booked">01:15</div><div style="left: 10.53%; width: 4.21%;" class="slot round_button booked">02:30</div><div style="left: 16.84%; width: 4.21%;" class="slot round_button">04:00</div><div style="left: 22.11%; width: 4.21%;" class="slot round_button">05:15</div><div style="left: 27.37%; width: 4.21%;" class="slot round_button">06:30</div><div style="left: 32.63%; width: 4.21%;" class="slot round_button booked">07:45</div><div style="left: 37.89%; width: 4.21%;" class="slot round_button booked">09:00</div><div style="left: 43.16%; width: 4.21%;" class="slot round_button booked">10:15</div><div style="left: 48.42%; width: 4.21%;" class="slot round_button booked">11:30</div><div style="left: 53.68%; width: 4.21%;" class="slot round_button booked">12:45</div><div style="left: 58.95%; width: 4.21%;" class="slot round_button booked">14:00</div><div style="left: 64.21%; width: 4.21%;" class="slot round_button booked">15:15</div><div style="left: 69.47%; width: 4.21%;" class="slot round_button booked">16:30</div><div style="left: 74.74%; width: 4.21%;" class="slot round_button booked">17:45</div><div style="left: 80%; width: 4.21%;" class="slot round_button booked">19:00</div><div style="left: 85.26%; width: 4.21%;" class="slot round_button booked">20:15</div><div style="left: 90.53%; width: 4.21%;" class="slot round_button booked">21:30</div><div style="left: 95.79%; width: 4.21%;" class="slot round_button booked">22:45</div></div>
 </div><div class="quest_schedule"><div class="timeslots"><div style="left: 0%; width: 4.21%;" class="slot round_button booked">00:00</div><div style="left: 5.26%; width: 4.21%;" class="slot round_button">01:15</div><div style="left: 10.53%; width: 4.21%;" class="slot round_button">02:30</div><div style="left: 16.84%; width: 4.21%;" class="slot round_button">04:00</div><div style="left: 22.11%; width: 4.21%;" class="slot round_button">05:15</div><div style="left: 27.37%; width: 4.21%;" class="slot round_button">06:30</div><div style="left: 32.63%; width: 4.21%;" class="slot round_button booked">07:45</div><div style="left: 37.89%; width: 4.21%;" class="slot round_button">09:00</div><div style="left: 43.16%; width: 4.21%;" class="slot round_button booked">10:15</div><div style="left: 48.42%; width: 4.21%;" class="slot round_button">11:30</div><div style="left: 53.68%; width: 4.21%;" class="slot round_button">12:45</div><div style="left: 58.95%; width: 4.21%;" class="slot round_button booked">14:00</div><div style="left: 64.21%; width: 4.21%;" class="slot round_button booked">15:15</div><div style="left: 69.47%; width: 4.21%;" class="slot round_button booked">16:30</div><div style="left: 74.74%; width: 4.21%;" class="slot round_button booked">17:45</div><div style="left: 80%; width: 4.21%;" class="slot round_button booked">19:00</div><div style="left: 85.26%; width: 4.21%;" class="slot round_button booked">20:15</div><div style="left: 90.53%; width: 4.21%;" class="slot round_button booked">21:30</div><div style="left: 95.79%; width: 4.21%;" class="slot round_button booked">22:45</div></div>
 </div><div class="quest_schedule"><div class="timeslots"><div style="left: 0%; width: 4.21%;" class="slot round_button booked">00:00</div><div style="left: 5.26%; width: 4.21%;" class="slot round_button">01:15</div><div style="left: 10.53%; width: 4.21%;" class="slot round_button">02:30</div><div style="left: 16.84%; width: 4.21%;" class="slot round_button">04:00</div><div style="left: 22.11%; width: 4.21%;" class="slot round_button">05:15</div><div style="left: 27.37%; width: 4.21%;" class="slot round_button">06:30</div><div style="left: 32.63%; width: 4.21%;" class="slot round_button">07:45</div><div style="left: 37.89%; width: 4.21%;" class="slot round_button">09:00</div><div style="left: 43.16%; width: 4.21%;" class="slot round_button booked">10:15</div><div style="left: 48.42%; width: 4.21%;" class="slot round_button booked">11:30</div><div style="left: 53.68%; width: 4.21%;" class="slot round_button booked">12:45</div><div style="left: 58.95%; width: 4.21%;" class="slot round_button booked">14:00</div><div style="left: 64.21%; width: 4.21%;" class="slot round_button booked">15:15</div><div style="left: 69.47%; width: 4.21%;" class="slot round_button booked">16:30</div><div style="left: 74.74%; width: 4.21%;" class="slot round_button booked">17:45</div><div style="left: 80%; width: 4.21%;" class="slot round_button booked">19:00</div><div style="left: 85.26%; width: 4.21%;" class="slot round_button booked">20:15</div><div style="left: 90.53%; width: 4.21%;" class="slot round_button booked">21:30</div><div style="left: 95.79%; width: 4.21%;" class="slot round_button booked">22:45</div></div>
@@ -6902,28 +6737,3 @@
 
 
     </div>
-
-
-
-            </div>
-
-        </div>
-
- 
-<div class="ot">
-<div class="ot-box"><img src="o1.jpg" alt="" /><p>В период нашего сотрудничества, все обязательства со стороны РА РекМедиа выполнялись своевременно и в полном объеме. Мы остались довольны работой и результатами проведенной рекламной кампании. Спасибо!</p></div>
-<div class="ot-box"><img src="o2.jpg" alt="" /><p>Выражаю благодарность РА РекМедиа за отличную работу и возможность достижения нами поставленных целей в сфере развития нашего бизнеса. Благодаря вам увеличилось количество гостей, посещающих наше заведение. Спасибо огромное Вячеславу и Михаилу за помощь!</p></div>
-<div class="ot-box"><img src="o3.jpg" alt="" /><p>В период нашего сотрудничества, все обязательства со стороны РА РекМедиа выполнялись своевременно и в полном объеме. Мы остались довольны работой и результатами проведенной рекламной кампании. Спасибо!</p></div>
-<div class="ot-box"><img src="o4.jpg" alt="" /><p>Выражаю благодарность РА РекМедиа за отличную работу и возможность достижения нами поставленных целей в сфере развития нашего бизнеса. Благодаря вам увеличилось количество гостей, посещающих наше заведение. Спасибо огромное Вячеславу и Михаилу за помощь!</p></div> 
-</div>
- 
-<div class="arrows">
-<div class="arrows1"><a href="/"></a></div>
-<div class="arrows2"><a href="/"></a></div>
-</div>
-        
-
-    
-
-</body>
-</html>

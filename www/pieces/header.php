@@ -7,7 +7,17 @@
   <title> Мир комнат</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=900, maximum-scale=0.8, minimum-scale=0.2, user-scalable=yes">
-  <link rel="stylesheet" type="text/css" href="css/index.css" media="all">
+  <?php
+    switch ($_SERVER['PHP_SELF']) {
+      case '/room.php':
+        echo '<link rel="stylesheet" type="text/css" href="css/index2.css" media="all">';
+        break;
+      
+      default:
+        echo '<link rel="stylesheet" type="text/css" href="css/index.css" media="all">';
+        break;
+    }
+  ?>
 </head>
 <body>
   <div id="container">
