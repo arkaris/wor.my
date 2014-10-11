@@ -6,8 +6,8 @@ class EasyMail
   private $to;
   private $subject;
   private $message;
-  private $headerz = "Content-type: text/html; charset=utf-8";
-  //private $from = 'worldofrooms.ru';
+  private $headers = "Content-type: text/html; charset=utf-8";
+  private $from = 'From: robot@worldofrooms.ru';
   public $result = false;
   
   public function __construct($sub, $param) {
@@ -29,9 +29,9 @@ class EasyMail
   
   private function confirm_email($param) {
     $this->to = $param['to'];
-    $this->subject = 'subject';
-    $link = 'arkaris.ru/wor/confirm.php?email='.$param['to'].'&hash='.$param['hash_code'];
-    $this->message = "
+    $this->subject = 'Подтверждение регистрации на worldofrooms.ru';
+    $link = 'http://worldofrooms.ru/confirm.php?email='.$param['to'].'&hash='.$param['hash_code'];
+    $this->message = '
     <html> 
       <head> 
           <title>title</title> 
@@ -39,12 +39,14 @@ class EasyMail
       <body> 
           <p>Hello, world!!!</p>
           <p>Салют!</p>
-          <a href=$link>Подтверждение регистрации</p>
+          <a href='.$link.'>Подтверждение регистрации</a>
+          <p>'.$link.'</p>
       </body> 
-    </html>";
+    </html>';
     return true;
   }
   
+  /*
   private function test($param) {
     $this->to = $param['to'];
     $this->subject = 'subject';
@@ -60,10 +62,17 @@ class EasyMail
     </html>';
     return true;
   }
+  */
   
   public function send() {
-    $result = mail($this->to, $this->subject, $this->message, $this->headerz ."\r\n ".$this->from);
+    $result = mail($this->to, $this->subject, $this->message, $this->headers ."\r\n".$this->from);
     return $result;
   }
+  
+  /*
+  public function showMail() {
+    print_r($this);
+  }
+  */
 }
 ?>
