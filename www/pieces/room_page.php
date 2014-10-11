@@ -1,3 +1,11 @@
+<?php
+  require './classes/Shedule.class.php';
+  class RoomShedule extends Shedule {
+    
+  }
+  
+?>
+
 <div id="quest_page">
   <div class="quest_card">
     <div class="kom_card">
