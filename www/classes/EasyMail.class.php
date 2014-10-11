@@ -40,7 +40,6 @@ class EasyMail
           <p>Hello, world!!!</p>
           <p>Салют!</p>
           <a href='.$link.'>Подтверждение регистрации</a>
-          <p>'.$link.'</p>
       </body> 
     </html>';
     return true;
