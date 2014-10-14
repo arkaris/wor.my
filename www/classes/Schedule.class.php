@@ -2,9 +2,9 @@
 class Schedule {
   
   private $db;
-  public $room = array();
+  public $room;
   
-  private $db_host = "localhost";//worldofroomsru.ipagemysql.com
+  private $db_host = "localhost";
   private $db_name = "wor";
   private $db_user = "arkaris";
   private $db_pass = "testp";
@@ -25,30 +25,28 @@ class Schedule {
   }
   
   public function getRoomSchedule($rid) {
-    //2014-10-30 01:30:00 - формат времени в базе
     $query = "select room_id, time, user_id from rooms where room_id = :rid and time>now() and time<(now()+interval 2 week)";
     $sth = $this->db->prepare($query);
-
     $sth->execute(
       array(
         ":rid" => $rid
       )
     );
     
-    foreach ($sth as $key => $value) {
-      $row = $sth->fetch();
+    $key = 0;
+    while ($row = $sth->fetch()) {
       $result[$key]['rid'] = $row['room_id'];
       $result[$key]['time'] = strtotime($row['time']);
-      $result[$key]['book'] = $row['user_id']==0 ? '' : ' booked';
-    }
+      $result[$key]['book'] = $row['user_id']=='' ? '' : ' booked';
+      $key++;
+    } unset($key);
     
     if (!$result) {
       $info = $sth->errorInfo();
       printf("Database error %d %s", $info[1], $info[2]);
       die();
     }
-    $this->room[$rid] = $result;
-    //print_r($this->room[$rid]);
+    $this->room = $result;
     return $result;
   }
   

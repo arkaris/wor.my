@@ -74,10 +74,10 @@
       <div class="timeslots_header">
         <div class="header_lines">
         <?php
-        $shed = new Schedule;
-        $shed->getRoomSchedule($room['rid']);
+        $sched = new Schedule;
+        $sched->getRoomSchedule($room['rid']);
         $tmp;
-         foreach ($shed->room[$room['rid']] as $key => $value) {
+         foreach ($sched->room as $value) {
           if ( $tmp != date('j F',$value['time']) ) {
             $tmp = date('j F',$value['time']);
             if (date('N', $value['time'])<6){
@@ -99,16 +99,18 @@
              <div class="scroller_inner">
                <div class="schedule_lines">
                  <?php
-                 $tmp = date('j F',$shed->room[$room['rid']][0]['time']);
+                 $tmp = date('j F',$sched->room[0]['time']);
                  echo '<div class="quest_schedule">';
                  echo '<div class="timeslots">';
-                 foreach ($shed->room[$room['rid']] as $key => $value) {
+                 foreach ($sched->room as $value) {
+                   $left = date('B', $value['time'] +10800)/10;//-strtotime('1970-01-01T01:00:00+04:00');
+                   //echo date('c', $value['time']);
                    if ( $tmp == date('j F',$value['time']) ) {
-                     $left = date('B', $value['time'] - 1413241200)/10;//-strtotime('03:00:00');
-                     echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button '.$value['book'].'">'.date('H:i', $value['time']).'</div>';
+                     echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button'.$value['book'].'">'.date('H:i', $value['time']).'</div>';
                    } else {
                      $tmp = date('j F',$value['time']);
                      echo '</div></div><div class="quest_schedule"><div class="timeslots">';
+                     echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button'.$value['book'].'">'.date('H:i', $value['time']).'</div>';
                    }
                  } unset($tmp);
                  echo '</div></div>';
