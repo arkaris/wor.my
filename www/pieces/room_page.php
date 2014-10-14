@@ -74,8 +74,8 @@
       <div class="timeslots_header">
         <div class="header_lines">
         <?php
-        $shed = new Shedule;
-        $shed->getRoomShedule($room['rid']);
+        $shed = new Schedule;
+        $shed->getRoomSchedule($room['rid']);
         $tmp;
          foreach ($shed->room[$room['rid']] as $key => $value) {
           if ( $tmp != date('j F',$value['time']) ) {
