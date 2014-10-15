@@ -52,7 +52,7 @@ class Schedule {
   }
   
   public function getDateSchedule($day) {
-    $query = "select room_id, time, user_id from rooms where time>:today and time<(:today+interval 1 day)";
+    $query = "select room_id, time, price, user_id from rooms where time>:today and time<(:today+interval 1 day)";
     $sth = $this->db->prepare($query);
     $sth->execute(
       array(
@@ -64,6 +64,7 @@ class Schedule {
     while ($row = $sth->fetch()) {
       $result[$key]['rid'] = $row['room_id'];
       $result[$key]['time'] = strtotime($row['time']);
+      $result[$key]['price'] = $row['price'];
       $result[$key]['book'] = $row['user_id']=='' ? '' : ' booked';
       $key++;
     } unset($key);
