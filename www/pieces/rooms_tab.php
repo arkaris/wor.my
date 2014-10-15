@@ -25,7 +25,7 @@ foreach ($roomes as $value) {
       echo '<div class="bottom">';
         echo '<div class="img" style="background: url(\''.$value['rlogo'].'\') no-repeat;"></div>';
         echo '<div class="h2">';
-          echo '<h2><a href="room.php?rid='.$value['rid'].'">'.$value['rname']."</a><div></div></h2>";
+          echo '<h2><a href="room.php?rid='.$value['rid'].'">'.$value['rname'].'</a><div></div></h2>';
         echo '</div>';
         echo '<div class="location_info">';
           echo '<p><span class="small_icon phone">'.$value['rphone'].'</span></p>';

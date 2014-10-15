@@ -3,6 +3,7 @@ class Schedule {
   
   private $db;
   public $room;
+  public $day;
   
   private $db_host = "localhost";
   private $db_name = "wor";
@@ -35,7 +36,7 @@ class Schedule {
     
     $key = 0;
     while ($row = $sth->fetch()) {
-      $result[$key]['rid'] = $row['room_id'];
+      //$result[$key]['rid'] = $row['room_id'];
       $result[$key]['time'] = strtotime($row['time']);
       $result[$key]['book'] = $row['user_id']=='' ? '' : ' booked';
       $key++;
@@ -47,6 +48,33 @@ class Schedule {
       die();
     }
     $this->room = $result;
+    return $result;
+  }
+  
+  public function getDateSchedule($day) {
+    $query = "select room_id, time, user_id from rooms where time>:today and time<(:today+interval 1 day)";
+    $sth = $this->db->prepare($query);
+    $sth->execute(
+      array(
+        ":today" => date('Y-m-d 00:00:00',$day)
+      )
+    );
+    
+    $key = 0;
+    while ($row = $sth->fetch()) {
+      $result[$key]['rid'] = $row['room_id'];
+      $result[$key]['time'] = strtotime($row['time']);
+      $result[$key]['book'] = $row['user_id']=='' ? '' : ' booked';
+      $key++;
+    } unset($key);
+    $this->day = $result;
+    
+    if (!$result) {
+      $info = $sth->errorInfo();
+      printf("Database error %d %s", $info[1], $info[2]);
+      die();
+    }
+    //print_r($result);
     return $result;
   }
   

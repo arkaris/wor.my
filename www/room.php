@@ -5,12 +5,18 @@ if (!empty($_COOKIE['sid'])) {
   session_id($_COOKIE['sid']);
 }
 session_start();
-require_once 'classes/Auth.class.php';
+require_once './classes/Auth.class.php';
+require_once './classes/Schedule.class.php';
 include './rooms/room_list.php';
 
 include 'pieces/header.php';
 $rid = $_GET['rid'];
-$room = $roomes[$rid];
+for ($i=0; $i<count($roomes); $i++) {
+  if ($roomes[$i]['rid']==$rid) {
+    $room = $roomes[$i];
+    break;
+  }
+}
 if ($room) include './pieces/room_page.php';
 else echo'<p>Этой комнаты не найдено</p>';
 ?>

@@ -1,7 +1,3 @@
-<?php
-  require './classes/Schedule.class.php';
-?>
-
 <div id="quest_page">
   <div class="quest_card">
     <div class="kom_card">
