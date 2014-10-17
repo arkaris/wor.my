@@ -26,7 +26,7 @@ class Schedule {
   }
   
   public function getRoomSchedule($rid) {
-    $query = "select room_id, time, user_id from rooms where room_id = :rid and time>now() and time<(now()+interval 2 week)";
+    $query = "select room_id, time, price, user_id from rooms where room_id = :rid and time>now() and time<(now()+interval 2 week)";
     $sth = $this->db->prepare($query);
     $sth->execute(
       array(
@@ -38,6 +38,7 @@ class Schedule {
     while ($row = $sth->fetch()) {
       //$result[$key]['rid'] = $row['room_id'];
       $result[$key]['time'] = strtotime($row['time']);
+      $result[$key]['price'] = $row['price'];
       $result[$key]['book'] = $row['user_id']=='' ? '' : ' booked';
       $key++;
     } unset($key);

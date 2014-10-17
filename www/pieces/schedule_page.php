@@ -93,7 +93,7 @@
                   foreach ($sched->day as $dvalue) {
                     if ($dvalue['rid'] == $rvalue['rid']) {
                       $left = date('B', $dvalue['time'] +10800)/10;
-                      echo '<div class="slot" style="left: '.$left.'%; width: 4.12%; text-align: center;">'.$dvalue['price'].'р</div>';
+                      echo '<div class="slot'.$dvalue['book'].'" style="left: '.$left.'%; width: 4.12%; text-align: center;">'.$dvalue['price'].'р</div>';
                     }
                   }
                 echo '</div></div>';

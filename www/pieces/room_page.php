@@ -95,21 +95,24 @@
              <div class="scroller_inner">
                <div class="schedule_lines">
                  <?php
-                 $tmp = date('j F',$sched->room[0]['time']);
+                 $date = date('j F',$sched->room[0]['time']);
+                 $priceLine ='';
                  echo '<div class="quest_schedule">';
                  echo '<div class="timeslots">';
                  foreach ($sched->room as $value) {
-                   $left = date('B', $value['time'] +10800)/10;//-strtotime('1970-01-01T01:00:00+04:00');
-                   //echo date('c', $value['time']);
-                   if ( $tmp == date('j F',$value['time']) ) {
+                   $left = date('B', $value['time'] +10800)/10;
+                   if ( $date == date('j F',$value['time']) ) {
                      echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button'.$value['book'].'">'.date('H:i', $value['time']).'</div>';
+                     $priceLine .= '<div class="slot'.$value['book'].'" style="left: '.$left.'%; width: 4.12%; text-align: center;">'.$value['price'].'р</div>';
                    } else {
-                     $tmp = date('j F',$value['time']);
-                     echo '</div></div><div class="quest_schedule"><div class="timeslots">';
-                     echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button'.$value['book'].'">'.date('H:i', $value['time']).'</div>';
+                     $date = date('j F',$value['time']);
+                     echo '</div><div class="pricelines">'.$priceLine.'</div></div><div class="quest_schedule"><div class="timeslots">';
+                     echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button'.$value['book'].'">'.date('H:i', $value['time']).'</div> ';
+                     $priceLine = '<div class="slot'.$value['book'].'" style="left: '.$left.'%; width: 4.12%; text-align: center;">'.$value['price'].'р</div>';
                    }
                  } unset($tmp);
                  echo '</div></div>';
+                 
                  ?>
               </div>
             </div>
