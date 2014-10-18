@@ -76,11 +76,7 @@
          foreach ($sched->room as $value) {
           if ( $tmp != date('j F',$value['time']) ) {
             $tmp = date('j F',$value['time']);
-            if (date('N', $value['time'])<6){
-              echo '<div class="day_line header_line">';
-            } else {
-              echo '<div class="day_line header_line holiday">';
-            }
+            echo '<div class="day_line header_line'.(date('N', $value['time'])>5?' holiday':'').'" onclick=(document.location.href="./schedule.php?day='.$value['time'].'")>';
             echo '<h3>'.$tmp.'</h3>';
             echo '<p>'.date('l', $value['time']).'</p>';
             echo '</div>';
