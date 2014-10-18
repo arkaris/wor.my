@@ -12,7 +12,7 @@
       for ($i=0; $i<31; $i++) {
         $tmp = time()+$i*24*60*60;
         $holiday = date('N', $tmp)>5 ? ' holiday': '';
-        echo '<div class="one_day'.$holiday.'">';//booked
+        echo '<div class="one_day'.$holiday.'" onclick=(document.location.href="./schedule.php?day='.$tmp.'")>';//booked
         echo '<div class="date">'.date('j', $tmp).'</div>';
         echo '<span class="day">'.date('D', $tmp).'</span>';
         echo '</div>';
