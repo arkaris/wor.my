@@ -40,8 +40,8 @@ else echo'<p>Этой комнаты не найдено</p>';
 <div class="arrows2"><a href="/"></a></div>
 </div>
         
-
-    
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="./js/ajax-form.js"></script>
 
 </body>
 </html>
