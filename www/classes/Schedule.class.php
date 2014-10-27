@@ -80,6 +80,40 @@ class Schedule {
     return $result;
   }
   
+  public function book($rid, $time) {
+    $uid = $_SESSION["user_id"];
+    
+    $query = "select id from rooms where room_id = :rid and time = :time limit 1";
+    $sth = $this->db->prepare($query);
+    $sth->execute(
+      array(
+        ":rid" => $rid,
+        ":time" => $time
+      )
+    );
+    
+    $result = $sth->fetch(); 
+    if (!$result['user_id']) return false;
+    
+    $query = "update rooms set user_id = :uid where room_id = :rid and time = :time limit 1";
+    $sth = $this->db->prepare($query);
+    try {
+      $this->db->beginTransaction();
+      $result = $sth->execute(
+        array(
+          ':uid' => $uid,
+          ':rid' => $rid,
+          ':time' => $time
+        )
+      );
+      $this->db->commit();
+    } catch(PDOException $e) {
+      $this->db->rollback();
+      echo "Database error: " . $e->getMessage();
+      die;
+    }
+  }
+  
   public function connectdb($db_name, $db_user, $db_pass, $db_host = "localhost")
   {
     try {

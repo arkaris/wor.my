@@ -17,12 +17,13 @@ class AuthorizationAjaxRequest extends AjaxRequest
         "login" => "login",
         "logout" => "logout",
         "register" => "register",
+        "book" => "book"
     );
 
     public function login()
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-            // Method Not Allowed
+            //Method Not Allowed
             //http_response_code(405);
             header("Allow: POST");
             $this->setFieldError("main", "Method Not Allowed");
@@ -132,6 +133,40 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $this->message = sprintf("Hello, %s! Thank you for registration.", $email);
         $this->setResponse("redirect", "./confirm.php");
         $this->status = "ok";
+    }
+    
+    public function book() {
+      if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+        //Method Not Allowed
+        //http_response_code(405);
+        header("Allow: POST");
+        $this->setFieldError("main", "Method Not Allowed");
+        return;
+      }
+      
+      if (!Auth\User::isAuthorized()){
+        $this->setFieldError("main", "You are don't authorized.");
+        return;
+      }
+      
+      $time = $this->getRequestParam("time");
+      $rid = $this->getRequestParam("time");
+      if (empty($time) or empty($rid)) {
+          $this->setFieldError("main", "Not enaugh data.");
+          return;
+      }
+      
+      $sched = new Schedule();
+      $book_result = $sched->book($rid, $time);
+      
+      if (!$auth_result) {
+        $this->setFieldError("main", "Time is already booked.");
+        return;
+      }
+      
+      $this->status = "ok";
+      $this->setResponse("redirect", "./user.php");
+      $this->message = sprintf("Room is booked at %s.", date('c',$time));
     }
 }
 

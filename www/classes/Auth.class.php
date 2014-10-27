@@ -8,12 +8,12 @@ class User
     private $db;
     private $user_id;
 
-    private $db_host = "localhost";//worldofroomsru.ipagemysql.com
+    private $db_host = "localhost";
     private $db_name = "wor";
     private $db_user = "arkaris";
     private $db_pass = "testp";
 /*
-    private $db_host = "localhost";//worldofroomsru.ipagemysql.com
+    private $db_host = "localhost";
     private $db_name = "grafin2a_wor";
     private $db_user = "grafin2a_wor";
     private $db_pass = "flame111";
@@ -134,7 +134,7 @@ class User
             unset($_SESSION["user_id"]);
         }
     }
-
+    
     public function saveSession($remember = true, $http_only = false, $days = 7)
     {
         $_SESSION["user_id"] = $this->user_id;

@@ -50,7 +50,8 @@
             book: function($sched, data) {
               if (data.status === 'ok') {
                 if (data.data && data.data.redirect) {
-                  window.location.href = data.data.redirect;
+                  //window.location.href = data.data.redirect;
+                  alert(data.message);
                 }
               }
             }
@@ -243,7 +244,7 @@
         //$target = $(target);
         var method = $sched.attr('method') || 'POST';
         var action = $sched.attr('action') || '.';
-        var data = 'act=book&time=0';// + target.innerText;
+        var data = 'act=book&rid='+target.parentNode.getAttribute('rid')+'&time='+target.getAttribute('time');
         target.setAttribute('action', 'book');
         
         var ajaxSettings = {
@@ -287,7 +288,8 @@
           var $mainErrorContainer = $sched.find("[data-error=" + data.code + "]");
           if (data.code === 'main') {
             if ($mainErrorContainer !== null) {
-              $mainErrorContainer.html(data.message);
+              //$mainErrorContainer.html(data.message);
+              window.alert(data.message);
             } else {
               //$sched.append('<p class="error">' + data.message + '</p>');
               window.alert(data.message);
