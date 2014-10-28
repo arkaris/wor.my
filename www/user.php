@@ -7,9 +7,11 @@ if (!empty($_COOKIE['sid'])) {
 }
 session_start();
 require_once 'classes/Auth.class.php';
+include './rooms/room_list.php';
 
 include 'pieces/header.php';
 include 'pieces/message.php';
-echo 'hello world';
+include 'pieces/book.php';
+include 'pieces/history.php';
 include 'pieces/footer.php';
 ?>

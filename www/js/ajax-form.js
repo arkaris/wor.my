@@ -45,6 +45,14 @@
                         window.location.href = data.data.redirect;
                     }
                 }
+            },
+            
+            book: function($sched, data) {
+              if (data.status === 'ok') {
+                if (data.data && data.data.redirect) {
+                  window.location.href = data.data.redirect;
+                }
+              }
             }
 
         }
@@ -174,7 +182,8 @@
                 var $mainErrorContainer = $form.find("[data-error=" + data.code + "]");
                 if (data.code === 'main') {
                     if ($mainErrorContainer !== null) {
-                        $mainErrorContainer.html(data.message);
+                        //$mainErrorContainer.html(data.message);
+                        window.alert(data.message);
                     } else {
                         $form.append('<p class="error">' + data.message + '</p>');
                     }
@@ -188,7 +197,7 @@
             this.callback($form, data);
         }
     };
-
+    
     function getURLParam(name, url) {
         url = url || window.location.href;
         name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -233,7 +242,7 @@
             }
             return translated;
         }
-
+        
         script.init = function() {
             this.ajaxform.init('form.ajax');
             this.ajax.init();

@@ -94,16 +94,16 @@
                  $date = date('j F',$sched->room[0]['time']);
                  $priceLine ='';
                  echo '<div class="quest_schedule">';
-                 echo '<div class="timeslots">';
+                 echo '<div class="timeslots" rid='.$room['rid'].'>';
                  foreach ($sched->room as $value) {
                    $left = date('B', $value['time'] +10800)/10;
                    if ( $date == date('j F',$value['time']) ) {
-                     echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button'.$value['book'].'">'.date('H:i', $value['time']).'</div>';
+                     echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button'.$value['book'].'" time='.$value['time'].'>'.date('H:i', $value['time']).'</div>';
                      $priceLine .= '<div class="slot'.$value['book'].'" style="left: '.$left.'%; width: 4.12%; text-align: center;">'.$value['price'].'р</div>';
                    } else {
                      $date = date('j F',$value['time']);
-                     echo '</div><div class="pricelines">'.$priceLine.'</div></div><div class="quest_schedule"><div class="timeslots">';
-                     echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button'.$value['book'].'">'.date('H:i', $value['time']).'</div> ';
+                     echo '</div><div class="pricelines">'.$priceLine.'</div></div><div class="quest_schedule"><div class="timeslots" rid='.$room['rid'].'>';
+                     echo '<div style="left: '.$left.'%; width: 4.21%;" class="slot round_button'.$value['book'].'" time='.$value['time'].'>'.date('H:i', $value['time']).'</div> ';
                      $priceLine = '<div class="slot'.$value['book'].'" style="left: '.$left.'%; width: 4.12%; text-align: center;">'.$value['price'].'р</div>';
                    }
                  } unset($tmp);
@@ -142,3 +142,22 @@
         </div>
 */?>
 </div>
+<script>
+  function hasClass(el, cls) {
+    for (var c = el.className.split(' '),i=c.length-1; i>=0; i--) {
+      if (c[i] == cls) return true;
+    }
+    return false;
+  }
+  
+  var schedule = document.getElementsByClassName('schedule_body')[0];
+  schedule.onclick = function(event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement;
+    if (hasClass(target,'slot')) {
+      if (hasClass(target,'booked')) return false;
+      var link = 'act=book&rid='+target.parentNode.getAttribute('rid')+'&time='+target.getAttribute('time');
+      window.location.href = './user.php?act=book&rid='+target.parentNode.getAttribute('rid')+'&time='+target.getAttribute('time');
+    }
+  };
+</script>

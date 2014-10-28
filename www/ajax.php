@@ -159,7 +159,6 @@ class AuthorizationAjaxRequest extends AjaxRequest
       
       $sched = new Schedule();
       $book_result = $sched->book($rid, $time);
-      $this->setFieldError("main", $book_result);return;
       
       if (empty($book_result)) {
         $this->setFieldError("main", "Time is already booked.");

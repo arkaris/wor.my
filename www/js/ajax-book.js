@@ -50,7 +50,6 @@
             book: function($sched, data) {
               if (data.status === 'ok') {
                 if (data.data && data.data.redirect) {
-                  alert(data.message);
                   window.location.href = data.data.redirect;
                 }
               }
@@ -211,6 +210,7 @@
           event = event || window.event;
           var target = event.target || event.srcElement;
           if (hasClass(target,'slot')) {
+            if (hasClass(target,'booked')) return false;
             if ( script.ajaxbook.validate(target) ) {
               var $_this = $(this);
               script.ajaxbook.go($_this, target);
@@ -220,7 +220,7 @@
         });
       },
       
-      callback: function($sched, data) {//?
+      callback: function($sched, data) {
         //act=book||unbook
         var action = getURLParam('act', $sched.attr('action'));//search act in href
         
@@ -241,7 +241,6 @@
       },
       
       go: function($sched, target) {
-        //$target = $(target);
         var method = $sched.attr('method') || 'POST';
         var action = $sched.attr('action') || '.';
         var data = 'act=book&rid='+target.parentNode.getAttribute('rid')+'&time='+target.getAttribute('time');

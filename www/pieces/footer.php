@@ -4,18 +4,19 @@
 <?php
 
 switch ($_SERVER['PHP_SELF']) {
-  //case '/reg.php':
-    //echo '<script src="./js/ajax-form.js"></script>';
-    //echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';
-  case '/schedule.php':
+  /*case '/reg.php':
+    echo '<script src="./js/ajax-form.js"></script>';
+    echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';
+    break;*/
+  /*case '/schedule.php':
   case '/room.php' :
     echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';
     echo '<script src="./js/ajax-book.js"></script>';
-    break;
-  //case '/index.php':
-    //echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';
-    //echo '<script src="./js/ajax-form.js"></script>';
-    //break;
+    break;*/
+  /*case '/index.php':
+    echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';
+    echo '<script src="./js/ajax-form.js"></script>';
+    break;*/
   
   default:
     echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';

@@ -263,7 +263,7 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 .small_icon.email:after { background-position: -32px -233px; }
 .small_icon.address:before { background-position: -8px -282px; }
 .small_icon.address:after { background-position: -32px -282px; }
-.main_quest_list { padding: 2px; -moz-box-sizing: border-box; width: 100%; }
+.main_quest_list { padding: 2px; -moz-box-sizing: border-box; width: 100%; margin: 0px auto;}
 .main_quest_list .quest_mini_card { float: left; width: 33.33%; }
 .main_quest_list .quest_mini_card .frame { }
 #global_map { display: none; position: absolute; width: 100%; height: 600px; z-index: 3; background-color: rgb(34, 34, 34) ! important;margin-top: 40px; }

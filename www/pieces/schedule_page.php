@@ -110,3 +110,22 @@
     </div>
   </div>
 </div>
+<script>
+  function hasClass(el, cls) {
+    for (var c = el.className.split(' '),i=c.length-1; i>=0; i--) {
+      if (c[i] == cls) return true;
+    }
+    return false;
+  }
+  
+  var schedule = document.getElementsByClassName('schedule_body')[0];
+  schedule.onclick = function(event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement;
+    if (hasClass(target,'slot')) {
+      if (hasClass(target,'booked')) return false;
+      var link = 'act=book&rid='+target.parentNode.getAttribute('rid')+'&time='+target.getAttribute('time');
+      window.location.href = './user.php?act=book&rid='+target.parentNode.getAttribute('rid')+'&time='+target.getAttribute('time');
+    }
+  };
+</script>
