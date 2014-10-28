@@ -82,7 +82,7 @@
               <?php
               foreach ($roomes as $key => $rvalue) {
                 echo '<div class="quest_schedule">';
-                  echo '<div class="timeslots rid='.$rvalue['rid'].'">';
+                  echo '<div class="timeslots" rid='.$rvalue['rid'].'>';
                   foreach ($sched->day as $dvalue) {
                     if ($dvalue['rid'] == $rvalue['rid']) {
                       $left = date('B', $dvalue['time'] +10800)/10;

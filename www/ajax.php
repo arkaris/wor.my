@@ -3,6 +3,7 @@ header ("Content-type: text/html; charset=utf-8");
 
 require_once './classes/EasyMail.class.php';
 require_once './classes/Auth.class.php';
+require_once './classes/Schedule.class.php';
 require_once './classes/AjaxRequest.class.php';
 
 if (!empty($_COOKIE['sid'])) {
@@ -145,12 +146,12 @@ class AuthorizationAjaxRequest extends AjaxRequest
       }
       
       if (!Auth\User::isAuthorized()){
-        $this->setFieldError("main", "You are don't authorized.");
+        $this->setFieldError("main", "You are not authorized.");
         return;
       }
       
       $time = $this->getRequestParam("time");
-      $rid = $this->getRequestParam("time");
+      $rid = $this->getRequestParam("rid");
       if (empty($time) or empty($rid)) {
           $this->setFieldError("main", "Not enaugh data.");
           return;
@@ -158,8 +159,9 @@ class AuthorizationAjaxRequest extends AjaxRequest
       
       $sched = new Schedule();
       $book_result = $sched->book($rid, $time);
+      $this->setFieldError("main", $book_result);return;
       
-      if (!$auth_result) {
+      if (empty($book_result)) {
         $this->setFieldError("main", "Time is already booked.");
         return;
       }

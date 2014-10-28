@@ -82,8 +82,9 @@ class Schedule {
   
   public function book($rid, $time) {
     $uid = $_SESSION["user_id"];
+    $time = date('Y-m-d H:i:s',$time);
     
-    $query = "select id from rooms where room_id = :rid and time = :time limit 1";
+    $query = "select user_id, room_id from rooms where room_id = :rid and time = :time limit 1";
     $sth = $this->db->prepare($query);
     $sth->execute(
       array(
@@ -92,8 +93,8 @@ class Schedule {
       )
     );
     
-    $result = $sth->fetch(); 
-    if (!$result['user_id']) return false;
+    $result = $sth->fetch();
+    if (empty($result['room_id']) || !empty($result['user_id'])) return false;
     
     $query = "update rooms set user_id = :uid where room_id = :rid and time = :time limit 1";
     $sth = $this->db->prepare($query);
@@ -112,6 +113,7 @@ class Schedule {
       echo "Database error: " . $e->getMessage();
       die;
     }
+    return $result;
   }
   
   public function connectdb($db_name, $db_user, $db_pass, $db_host = "localhost")

@@ -50,8 +50,8 @@
             book: function($sched, data) {
               if (data.status === 'ok') {
                 if (data.data && data.data.redirect) {
-                  //window.location.href = data.data.redirect;
                   alert(data.message);
+                  window.location.href = data.data.redirect;
                 }
               }
             }
