@@ -43,7 +43,8 @@ if (!empty($rid) && !empty($time)) {
       echo "<div class='quest_mini_card'>";
         echo '<div class="unblur"></div>';
         echo '<div class="frame">';
-          echo '<h3>Начало:</p>';
+          echo '<h3>Начало:</h3>';
+          echo '<h2>'.date('c', $time).'</h2>';
           echo '<form class="ajax" method="post" action="./ajax.php" novalidate="novalidate">';
             echo '<input type="hidden" name="act" value="book">';
             echo '<input type="hidden" name="rid" value="'.$rid.'">';

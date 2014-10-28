@@ -7,6 +7,7 @@ if (!empty($_COOKIE['sid'])) {
 }
 session_start();
 require_once 'classes/Auth.class.php';
+require_once 'classes/Schedule.class.php';
 include './rooms/room_list.php';
 
 include 'pieces/header.php';
