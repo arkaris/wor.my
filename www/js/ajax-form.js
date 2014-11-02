@@ -53,8 +53,18 @@
                   window.location.href = data.data.redirect;
                 }
               }
+              if (data.status === 'err' && data.data.redirect) {
+                window.location.href = data.data.redirect;
+              }
+            },
+            
+            unbook: function($sched, data) {
+                if (data.status === 'ok') {
+                    if (data.data && data.data.redirect) {
+                        window.location.href = data.data.redirect;
+                    }
+                }
             }
-
         }
     };
 

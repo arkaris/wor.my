@@ -4,6 +4,7 @@ class Schedule {
   private $db;
   public $room;
   public $day;
+  public $data;
   
   private $db_host = "localhost";
   private $db_name = "wor";
@@ -77,6 +78,26 @@ class Schedule {
       die();
     }
     //print_r($result);
+    return $result;
+  }
+  
+  public function getUserSchedule($uid) {
+    $query = "select room_id, user_id, time from rooms where user_id=:uid ORDER BY time DESC";
+    $sth = $this->db->prepare($query);
+    $sth->execute(
+      array(
+        ":uid" => $uid
+      )
+    );
+    
+    $key = 0;
+    while ($row = $sth->fetch()) {
+      $result[$key]['rid'] = $row['room_id'];
+      $result[$key]['time'] = strtotime($row['time']);
+      $result[$key]['user_id'] = $row['user_id'];
+      $key++;
+    } unset($key);
+    $this->data = $result;
     return $result;
   }
   

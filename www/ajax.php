@@ -147,6 +147,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
       
       if (!Auth\User::isAuthorized()){
         $this->setFieldError("main", "You are not authorized.");
+        $this->setResponse("redirect", "./reg.php");
         return;
       }
       
