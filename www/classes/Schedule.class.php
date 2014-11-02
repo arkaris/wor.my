@@ -101,11 +101,11 @@ class Schedule {
     return $result;
   }
   
-  public function book($rid, $time) {
+  public function book($rid, $time, $remove=false) {
     $uid = $_SESSION["user_id"];
     $time = date('Y-m-d H:i:s',$time);
     
-    $query = "select user_id, room_id from rooms where room_id = :rid and time = :time limit 1";
+    $query = "select user_id from rooms where room_id = :rid and time = :time limit 1";
     $sth = $this->db->prepare($query);
     $sth->execute(
       array(
@@ -115,15 +115,18 @@ class Schedule {
     );
     
     $result = $sth->fetch();
-    if (empty($result['room_id']) || !empty($result['user_id'])) return false;
+    if ( $remove?$result['user_id']!==$uid:!empty($result['user_id']) ) return false;
     
-    $query = "update rooms set user_id = :uid where room_id = :rid and time = :time limit 1";
+    if ($remove) {
+      $query = "update rooms set user_id = null where room_id = :rid and time = :time limit 1";
+    } else {
+      $query = "update rooms set user_id = :uid where room_id = :rid and time = :time limit 1";
+    }
     $sth = $this->db->prepare($query);
     try {
       $this->db->beginTransaction();
       $result = $sth->execute(
         array(
-          ':uid' => $uid,
           ':rid' => $rid,
           ':time' => $time
         )

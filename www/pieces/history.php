@@ -1,6 +1,6 @@
 <?php
 $tmp = new Schedule; 
-$sched = ($tmp->getUserSchedule($_SESSION["user_id"]));
+$sched = $tmp->getUserSchedule($_SESSION["user_id"]);
 unset($tmp);
 
 if (isset($sched)) {
@@ -47,6 +47,7 @@ if (isset($sched)) {
       echo "<div class='quest_mini_card'>";
         echo '<div class="unblur"></div>';
         echo '<div class="frame">';
+        if ($data['time'] > time()) {
           echo '<h3>Начало:</h3>';
           echo '<h2>'.date('c', $data['time']).'</h2>';
           echo '<form class="ajax" method="post" action="./ajax.php" novalidate="novalidate">';
@@ -55,6 +56,11 @@ if (isset($sched)) {
             echo '<input type="hidden" name="time" value="'.$data['time'].'">';
             echo '<button type="submit" class="round_button" onclick="false">Отменить бронь</button>';
           echo '</form>';
+        } else {
+          echo '<form action="./result.php">';
+            echo '<button type "submit" class="round_button">Результаты</button>';
+          echo '</form>';
+        }
         echo '</div>';
       echo '</div>';
     echo '</div>';
