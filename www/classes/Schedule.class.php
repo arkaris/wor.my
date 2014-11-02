@@ -118,7 +118,7 @@ class Schedule {
     if ( $remove?$result['user_id']!==$uid:!empty($result['user_id']) ) return false;
     
     if ($remove) {
-      $query = "update rooms set user_id = null where room_id = :rid and time = :time limit 1";
+      $query = "update rooms set user_id = null where user_id = :uid and room_id = :rid and time = :time limit 1";
     } else {
       $query = "update rooms set user_id = :uid where room_id = :rid and time = :time limit 1";
     }
@@ -127,6 +127,7 @@ class Schedule {
       $this->db->beginTransaction();
       $result = $sth->execute(
         array(
+          ':uid' => $uid,
           ':rid' => $rid,
           ':time' => $time
         )

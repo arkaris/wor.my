@@ -136,7 +136,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
     $this->status = "ok";
   }
     
-  public function book() {
+  public function book($remove=false) {
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
       //Method Not Allowed
       //http_response_code(405);
@@ -159,51 +159,23 @@ class AuthorizationAjaxRequest extends AjaxRequest
     }
     
     $sched = new Schedule();
-    $book_result = $sched->book($rid, $time);
+    $book_result = $sched->book($rid, $time, $remove);
     
     if (empty($book_result)) {
-      $this->setFieldError("main", "Time is already booked.");
+      if ($remove) $this->setFieldError("main", "Time is free.");
+      else $this->setFieldError("main", "Time is already booked.");
       return;
     }
     
     $this->status = "ok";
     $this->setResponse("redirect", "./user.php");
-    $this->message = sprintf("Room is booked at %s.", date('c',$time));
+    if ($remove) $this->message = sprintf("Room is unbooked.");
+    else $this->message = sprintf("Room is booked at %s.", date('c',$time));
   }
   
   public function unbook() {
-    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-      //Method Not Allowed
-      //http_response_code(405);
-      header("Allow: POST");
-      $this->setFieldError("main", "Method Not Allowed");
-      return;
-    }
-    
-    if (!Auth\User::isAuthorized()){
-      $this->setFieldError("main", "You are not authorized.");
-      $this->setResponse("redirect", "./reg.php");
-      return;
-    }
-    
-    $time = $this->getRequestParam("time");
-    $rid = $this->getRequestParam("rid");
-    if (empty($time) or empty($rid)) {
-        $this->setFieldError("main", "Not enaugh data.");
-        return;
-    }
-    
-    $sched = new Schedule();
-    $book_result = $sched->book($rid, $time, true);
-    
-    if (empty($book_result)) {
-      $this->setFieldError("main", "Cant find room/time.");
-      return;
-    }
-    
-    $this->status = "ok";
-    $this->setResponse("redirect", "./schedule.php");
-    $this->message = sprintf("Room is unbooked.");
+    $this->book(true);
+    return;
   }
 }
 
