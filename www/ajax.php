@@ -196,9 +196,8 @@ class AuthorizationAjaxRequest extends AjaxRequest
     $sched = new Schedule();
     $book_result = $sched->book($rid, $time, true);
     
-    if (1/*empty($book_result)*/) {
-      //$this->setFieldError("main", "Cant find room/time.");
-      $this->setFieldError("main", $book_result);
+    if (empty($book_result)) {
+      $this->setFieldError("main", "Cant find room/time.");
       return;
     }
     

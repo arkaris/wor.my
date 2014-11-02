@@ -5,7 +5,7 @@ class Schedule {
   public $room;
   public $day;
   public $data;
-  
+
   private $db_host = "localhost";
   private $db_name = "wor";
   private $db_user = "arkaris";
