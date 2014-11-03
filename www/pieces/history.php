@@ -48,8 +48,8 @@ if (isset($sched)) {
         echo '<div class="unblur"></div>';
         echo '<div class="frame">';
         if ($data['time'] > time()) {
-          echo '<h3>Начало:</h3>';
-          echo '<h2>'.date('c', $data['time']).'</h2>';
+          echo '<h3>Дата: '.date('j.n.y', $data['time']).'</h3>';
+          echo '<h3>Время: '.date('H:i', $data['time']).'</h3>';
           echo '<form class="ajax" method="post" action="./ajax.php" novalidate="novalidate">';
             echo '<input type="hidden" name="act" value="unbook">';
             echo '<input type="hidden" name="rid" value="'.$data['rid'].'">';
@@ -57,9 +57,8 @@ if (isset($sched)) {
             echo '<button type="submit" class="round_button" onclick="false">Отменить бронь</button>';
           echo '</form>';
         } else {
-          echo '<form action="./result.php">';
-            echo '<button type "submit" class="round_button">Результаты</button>';
-          echo '</form>';
+          echo '<h3>Дата: '.date('j.n.y', $data['time']).'</h3>';
+          echo '<h3>Время: '.date('H:i', $data['time']).'</h3>';
         }
         echo '</div>';
       echo '</div>';

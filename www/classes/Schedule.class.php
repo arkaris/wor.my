@@ -82,7 +82,7 @@ class Schedule {
   }
   
   public function getUserSchedule($uid) {
-    $query = "select room_id, user_id, time from rooms where user_id=:uid ORDER BY time DESC";
+    $query = "select room_id, user_id, time, result from rooms where user_id=:uid ORDER BY time DESC";
     $sth = $this->db->prepare($query);
     $sth->execute(
       array(
@@ -95,6 +95,7 @@ class Schedule {
       $result[$key]['rid'] = $row['room_id'];
       $result[$key]['time'] = strtotime($row['time']);
       $result[$key]['user_id'] = $row['user_id'];
+      $result[$key]['result'] = $row['result'];
       $key++;
     } unset($key);
     $this->data = $result;
