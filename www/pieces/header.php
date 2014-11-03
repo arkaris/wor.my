@@ -30,17 +30,23 @@
           <input type="hidden" name="act" value="logout">
           <button type="submit" id="logoutButton" style="display:none;"></button>
         </form>
+      </div>
+      <div class="nav_icon nav_icon_left i3">
+        <div class="icon"> </div>
+        <a href="./user.php">Личный кабинет</a>
+      </div>
       <?php else: ?>
       <div class="nav_icon nav_icon_left i1">
         <div class="icon"> </div>
         <a href="./reg.php">Войти</a>
-        <?php endif; ?>
-        
       </div>
-      <div class="nav_icon nav_icon_left i2 auth">
+      <?php endif; ?>
+      
+      <div class="nav_icon nav_icon_left i2">
         <div class="icon"> </div>
         <a href="./call_us.php">Позвоните нам</a>
       </div>
+      
       <div id="site_logo" class="site_logo_ru"> <a href="./"></a> </div>
       <div class="nav_icon nav_icon_right i3">
         <div class="icon"> </div>

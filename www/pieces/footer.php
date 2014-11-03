@@ -21,6 +21,7 @@ switch ($_SERVER['PHP_SELF']) {
   default:
     echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';
     echo '<script src="./js/ajax-form.js"></script>';
+    echo '<script src="./js/href_extender.js"></script>';
     break;
 }
 

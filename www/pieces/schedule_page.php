@@ -7,7 +7,7 @@
   ?>
   <div id="calendar">
     <?php
-    echo '<div id="today"><div class="round_button date">'.date('d F', time()).'</div><span class="day">Сегодня</span></div>';
+    echo '<div id="today"><div class="round_button date" onclick=(document.location.href="./schedule.php?day='.time().'")>'.date('d F', time()).'</div><span class="day">Сегодня</span></div>';
     echo '<div id="line">';
       for ($i=0; $i<31; $i++) {
         $tmp = time()+$i*24*60*60;
@@ -33,7 +33,7 @@
           }
           unset($roomes[$key]);
         } catch(exception $e) {
-          echo '<div class="quest_line header_line">';
+          echo '<div class="quest_line header_line" onclick=hrefExtend(this)>';
           echo '<h3><a href="room.php?rid='.$rvalue['rid'].'">'.$rvalue['rname'].'</a></h3>';
           echo '<p>'.$rvalue['rmin'].' &mdash; '.$rvalue['rmax'].' игрока, '.$rvalue['continuance'].'</p>';
           echo '</div>';

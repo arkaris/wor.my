@@ -3,8 +3,7 @@ $rid = stripcslashes(htmlspecialchars(trim($_REQUEST['rid'])));
 $time = stripcslashes(htmlspecialchars(trim($_REQUEST['time'])));
 
 echo '<div class="tab_page tab_margin">';
-
-if (!empty($rid) && !empty($time)) {
+if (!empty($time) && !empty($rid)||($rid==='0')) {
   
   foreach ($roomes as $value) {
     if ($value['rid'] == $rid) {

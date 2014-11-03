@@ -70,7 +70,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input name="password1" id="c875_password1" type="password1"></span>
+                <input name="password1" id="c875_password1" type="password"></span>
               <span class="field_error" data-error="password1"></span>
             </div>
           </div>
@@ -80,7 +80,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input name="password2" id="c875_password2" type="password2"></span>
+                <input name="password2" id="c875_password2" type="password"></span>
               <span class="field_error" data-error="password2"></span>
             </div>
           </div>
