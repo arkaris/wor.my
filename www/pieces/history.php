@@ -59,6 +59,7 @@ if (isset($sched)) {
         } else {
           echo '<h3>Дата: '.date('j.n.y', $data['time']).'</h3>';
           echo '<h3>Время: '.date('H:i', $data['time']).'</h3>';
+          if (!empty($data['result'])) echo 'Победа за '.$data['result']%3600..'мин'.$data['result']%60..'сек';
         }
         echo '</div>';
       echo '</div>';

@@ -42,9 +42,8 @@ if (!empty($time) && !empty($rid)||($rid==='0')) {
     echo "<div class='quest_mini_card'>";
       echo '<div class="unblur"></div>';
       echo '<div class="frame">';
-        echo '<h3>Дата: '.date('j.n.y', $data['time']).'</h3>';
-        echo '<h3>Время: '.date('H:i', $data['time']).'</h3>';
-        if (!empty($data['result'])) echo 'Победа за '.$data['result']%3600..'мин'.$data['result']%60..'сек';
+        echo '<h3>Дата: '.date('j.n.y', $time).'</h3>';
+        echo '<h3>Время: '.date('H:i', $time).'</h3>';
         echo '<form class="ajax" method="post" action="./ajax.php" novalidate="novalidate">';
           echo '<input type="hidden" name="act" value="book">';
           echo '<input type="hidden" name="rid" value="'.$rid.'">';
