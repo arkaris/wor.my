@@ -153,7 +153,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
     
     $time = $this->getRequestParam("time");
     $rid = $this->getRequestParam("rid");
-    if (empty($time) or empty($rid)) {
+    if (empty($time) || empty($rid) && $rid!=='0') {
         $this->setFieldError("main", "Not enaugh data.");
         return;
     }
@@ -168,9 +168,13 @@ class AuthorizationAjaxRequest extends AjaxRequest
     }
     
     $this->status = "ok";
-    $this->setResponse("redirect", "./user.php");
-    if ($remove) $this->message = sprintf("Room is unbooked.");
-    else $this->message = sprintf("Room is booked at %s.", date('c',$time));
+    if ($remove) {
+      $this->message = sprintf("Room is unbooked.");
+      $this->setResponse("redirect", "./user.php?act=book&rid=$rid&time=$time");
+    } else {
+      $this->message = sprintf("Room is booked at %s.", date('c',$time));
+      $this->setResponse("redirect", "./user.php");
+    }
   }
   
   public function unbook() {
