@@ -193,11 +193,11 @@ border-radius: 5px; z-index: 1; margin: -1px; -moz-box-sizing: border-box; /*tra
 .tab_margin { padding: 0px 30px; }
 .quest_mini_card { display: block; width: 100%; position: relative; text-decoration: none; z-index: 2; cursor: default; }
 .quest_mini_card.enabled { cursor: pointer; }
-.quest_mini_card.enabled, .quest_mini_card.enabled a { color: rgb(255, 255, 255); transition: color 0.3s ease 0s; }
-.quest_mini_card.enabled:hover, .quest_mini_card.enabled:hover a { color: rgb(255, 213, 0); transition: color 0.3s ease 0s; }
+.quest_mini_card.enabled, .quest_mini_card.enabled a { color: rgb(255, 255, 255); transition: color 0.5s ease 0s; }
+.quest_mini_card.enabled:hover, .quest_mini_card.enabled:hover a { color: rgb(255, 213, 0); transition: color 0.5s ease 0s; }
 .quest_mini_card .frame { height: 280px; padding: 105px  25px 25px 25px; overflow:hidden;
-position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition: border-color 0.3s ease 0s; margin: 5px;box-shadow: 0px 0px 35px 25px #000; }
-
+position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition: border-color 0.5s ease 0s; margin: 5px; transition: box-shadow 0.5s ease 0s;}
+.quest_mini_card .frame:hover{box-shadow: 0px 0px 25px 15px #000;}
  
 .quest_mini_card.enabled:hover .frame { border-color: rgb(255, 213, 0); }
 .quest_mini_card .blur, .quest_mini_card .unblur { position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; background-size: cover; background-position: 50% 50%; z-index: 1; }
