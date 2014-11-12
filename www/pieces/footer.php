@@ -4,10 +4,12 @@
 <?php
 
 switch ($_SERVER['PHP_SELF']) {
-  /*case '/reg.php':
-    echo '<script src="./js/ajax-form.js"></script>';
+  case '/reg.php':
     echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';
-    break;*/
+    echo '<script src="./js/ajax-form.js"></script>';
+    echo '<script src="./js/href_extender.js"></script>';
+    echo '<script src="./js/showMe.js"></script>';
+    break;
   /*case '/schedule.php':
   case '/room.php' :
     echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';

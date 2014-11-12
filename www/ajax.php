@@ -18,6 +18,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
   "login" => "login",
   "logout" => "logout",
   "register" => "register",
+  "forgotPass" => "forgotPass",
   "book" => "book",
   "unbook" => "unbook"
   );
@@ -132,6 +133,55 @@ class AuthorizationAjaxRequest extends AjaxRequest
     //$user->authorize($email, $password1);
     
     $this->message = sprintf("Hello, %s! Thank you for registration.", $email);
+    $this->setResponse("redirect", "./confirm.php");
+    $this->status = "ok";
+  }
+  
+  public function forgotPass() {
+    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+      // Method Not Allowed
+      //http_response_code(405);
+      header("Allow: POST");
+      $this->setFieldError("main", "Method Not Allowed");
+      return;
+    }
+    setcookie("sid", "");
+    
+    $email = $this->getRequestParam("email");
+    $password1 = $this->getRequestParam("password1");
+    $password2 = $this->getRequestParam("password2");
+    
+    if (empty($email)) {
+      $this->setFieldError("email", "Enter the email");
+      return;
+    }
+    
+    if (empty($password1)) {
+      $this->setFieldError("password1", "Enter the password");
+      return;
+    }
+    
+    if (empty($password2)) {
+      $this->setFieldError("password2", "Confirm the password");
+      return;
+    }
+    
+    if ($password1 !== $password2) {
+      $this->setFieldError("password2", "Confirm password is not match");
+      return;
+    }
+    
+    $user = new Auth\User();
+    
+    try {
+      $new_user_id = $user->refreshPassword($email, $password1);
+    } catch (\Exception $e) {
+      $this->setFieldError("email", $e->getMessage());
+      return;
+    }
+    //$user->authorize($email, $password1);
+    
+    $this->message = sprintf("Hello, %s! Check your email.", $email);
     $this->setResponse("redirect", "./confirm.php");
     $this->status = "ok";
   }

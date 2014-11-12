@@ -196,7 +196,7 @@ border-radius: 5px; z-index: 1; margin: -1px; -moz-box-sizing: border-box; /*tra
 .quest_mini_card.enabled, .quest_mini_card.enabled a { color: rgb(255, 255, 255); transition: color 0.5s ease 0s; }
 .quest_mini_card.enabled:hover, .quest_mini_card.enabled:hover a { color: rgb(255, 213, 0); transition: color 0.5s ease 0s; }
 .quest_mini_card .frame { height: 280px; padding: 105px  25px 25px 25px; overflow:hidden;
-position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition: border-color 0.5s ease 0s; margin: 5px; transition: box-shadow 0.5s ease 0s;}
+position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition: border-color 0.5s ease 0s, box-shadow 0.5s ease 0s; margin: 5px; }
 .quest_mini_card .frame:hover{box-shadow: 0px 0px 25px 15px #000;}
  
 .quest_mini_card.enabled:hover .frame { border-color: rgb(255, 213, 0); }
@@ -369,10 +369,10 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 .auth_block .login {
     -moz-box-sizing: border-box;
     float: left;
-    padding-right: 60px;
+    padding-right: 3%;
     position: relative;
     text-align: right;
-    width: 50%;
+    width: 47%;
 }
 .auth_block .login a {
     margin-right: 1em;
@@ -389,11 +389,13 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 }
 .auth_block .registration {
     -moz-box-sizing: border-box;
-    margin-left: 50%;
     overflow: auto;
-    padding-left: 60px;
-    width: 50%;
+    padding-left: 3%;
 }
+.auth_block .hidden {
+  display: none;
+}
+
 .password_reset .round_button, .auth_block .registration .round_button {
     margin-left: 7em;
 }
@@ -430,14 +432,6 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 }
 .password_reset .input, .auth_block .input {
     margin-left: 1em;
-}
-.auth_block .login {
-    -moz-box-sizing: border-box;
-    float: left;
-    padding-right: 60px;
-    position: relative;
-    text-align: right;
-    width: 50%;
 }
 #delivery_form{
       margin: 0 auto;

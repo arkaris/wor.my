@@ -39,8 +39,7 @@ class User
         return false;
     }
     
-    public function confirm($hash_code) {
-      
+    public function confirmEmail($hash_code) {
         $query = "update users set hash = null where email = :email and hash = :hash limit 1";
         $sth = $this->db->prepare($query);
       
@@ -69,7 +68,60 @@ class User
         
         return $result;
     }
+    
+    public function refreshPassword($email, $password) {
+      $user_exists = $this->getSalt($email);
+      
+      if (!$user_exists) {
+        throw new \Exception("User not exists: " . $email, 1);
+      }
+      
+      $query = 'replace into forgot_Pass (email, password, salt, hash)
+            values (:email, :password, :salt, :hash)';
+        $hashes = $this->passwordHash($password);
+        $sth = $this->db->prepare($query);
+        
+        $hash_code = rand(100000000, 999999999);
+        $sub = 'forgot_password';
+        $mailParams = array(
+          to => $email,
+          hash_code => $hash_code
+        );
+        $mail = new \Mail\EasyMail($sub, $mailParams);
 
+        try {
+            $this->db->beginTransaction();
+            $result = $sth->execute(
+                array(
+                    ':email' => $email,
+                    ':password' => $hashes['hash'],
+                    ':salt' => $hashes['salt'],
+                    ':hash' => $hash_code
+                )
+            );
+            
+            $this->db->commit();
+            
+        } catch (\PDOException $e) {
+            $this->db->rollback();
+            echo "Database error: " . $e->getMessage();
+            die();
+        }
+
+        if (!$result) {
+            $info = $sth->errorInfo();
+            printf("Database error %d %s", $info[1], $info[2]);
+            die();
+        }
+        
+        if (!$mail->send()) {
+          $this->db->rollback();
+          throw new \Exception("Can't send email to: " . $email, 1);
+        }
+
+        return $result;
+    }
+    
     public function passwordHash($password, $salt = null, $iterations = 10)
     {
         $salt || $salt = uniqid();
@@ -201,7 +253,7 @@ class User
         
         if (!$mail->send()) {
           $this->db->rollback();
-          echo "Can't send email to: " . $email;
+          throw new \Exception("Can't send email to: " . $email, 1);
         }
 
         return $result;

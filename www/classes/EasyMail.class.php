@@ -17,8 +17,8 @@ class EasyMail
         $this->confirm_email($param);
         break;
         
-      case 'test':
-        $this->test($param);
+      case 'forgot_password':
+        $this->forgot_password($param);
         break;
       
       default:
@@ -30,7 +30,7 @@ class EasyMail
   private function confirm_email($param) {
     $this->to = $param['to'];
     $this->subject = 'Подтверждение регистрации на worldofrooms.ru';
-    $link = 'http://worldofrooms.ru/confirm.php?email='.$param['to'].'&hash='.$param['hash_code'];
+    $link = 'http://worldofrooms.ru/confirm.php?act=email&email='.$param['to'].'&hash='.$param['hash_code'];
     $this->message = '
     <html> 
       <head> 
@@ -45,10 +45,10 @@ class EasyMail
     return true;
   }
   
-  /*
-  private function test($param) {
+  private function forgot_password($param) {
     $this->to = $param['to'];
-    $this->subject = 'subject';
+    $this->subject = 'Подтверждение смены пароля на worldofrooms.ru';
+    $link = 'http://worldofrooms.ru/confirm.php?act=password&email='.$param['to'].'&hash='.$param['hash_code'];
     $this->message = '
     <html> 
       <head> 
@@ -56,22 +56,16 @@ class EasyMail
       </head> 
       <body> 
           <p>Hello, world!!!</p>
-          <p>Салют!</p> 
+          <p>Салют!</p>
+          <a href='.$link.'>Подтверждение смены пароля</a>
       </body> 
     </html>';
     return true;
   }
-  */
   
   public function send() {
     $result = mail($this->to, $this->subject, $this->message, $this->headers ."\r\n".$this->from);
     return $result;
   }
-  
-  /*
-  public function showMail() {
-    print_r($this);
-  }
-  */
 }
 ?>
