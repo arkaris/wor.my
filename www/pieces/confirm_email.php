@@ -11,8 +11,8 @@ if($email && $hash_code) {
     echo '<p>Ссылка неверна или устарела.</p>';
   }
 } else {
-  if ($_SERVER('HTTP_REFERER') == 'http://worldofrooms.ru/reg.php') {
-    echo '<p>Вам на почту выслано письмо со ссылкой для подтверждения регистрации.</p>';
+  if ($_SERVER['HTTP_REFERER'] == 'http://worldofrooms.ru/reg.php') {
+    echo '<p>Вам на почту выслано письмо со ссылкой для подтверждения.</p>';
   } else {
     echo '<p>Добрый день</p>';
   }

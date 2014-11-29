@@ -135,7 +135,7 @@
         <small>
           <p>Будьте внимательны при вводе номера телефона (пример - 79031234567)</p>
         </small>
-        <button type="submit" class="round_button" onclick = false>Зарегистрироваться</button>
+        <button type="submit" class="round_button" onclick = false>Сменить пароль</button>
       </form>
     </div>
   </div>

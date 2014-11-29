@@ -76,7 +76,7 @@ class User
         throw new \Exception("User not exists: " . $email, 1);
       }
       
-      $query = 'replace into forgot_Pass (email, password, salt, hash)
+      $query = 'replace into forgot_pass (email, password, salt, hash)
             values (:email, :password, :salt, :hash)';
         $hashes = $this->passwordHash($password);
         $sth = $this->db->prepare($query);
