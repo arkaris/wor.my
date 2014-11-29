@@ -69,11 +69,53 @@ class User
         return $result;
     }
     
-    public function refreshPassword($email, $password) {
-      $user_exists = $this->getSalt($email);
+    public function confirmPassword($hash_code) {
+      $query = 'select password, salt from forgot_pass where email = :email and hash = :hash limit 1';
+      $sth = $this->db->prepare($query);
+      
+      $sth->execute(
+        array(
+          ":email" => $this->email,
+          ":hash" => $hash_code
+        )
+      );
+      
+      $row = $sth->fetch();
+      if (!$row) {
+          return false;
+      }
+      
+      $query = 'update users set password = :password, salt = :salt where email = :email limit 1';
+      $sth = $this->db->prepare($query);
+      try {
+        $this->db->beginTransaction();
+        $result = $sth->execute(
+          array(
+            ":password" => $row['password'],
+            ":salt" => $row['salt'],
+            ":email" => $this->email
+          )
+        );
+        $this->db->commit();
+      } catch (\PDOException $e){
+        $this->db->rollback();
+            echo "Database error: " . $e->getMessage();
+            die();
+      }
+      if (!$result) {
+          $info = $sth->errorInfo();
+          printf("Database error %d %s", $info[1], $info[2]);
+          die();
+      }
+      
+      return $result;
+    }
+    
+    public function refreshPassword($password) {
+      $user_exists = $this->getSalt($this->$email);
       
       if (!$user_exists) {
-        throw new \Exception("User not exists: " . $email, 1);
+        throw new \Exception("User not exists: " . $this->$email, 1);
       }
       
       $query = 'replace into forgot_pass (email, password, salt, hash)
@@ -93,7 +135,7 @@ class User
             $this->db->beginTransaction();
             $result = $sth->execute(
                 array(
-                    ':email' => $email,
+                    ':email' => $this->$email,
                     ':password' => $hashes['hash'],
                     ':salt' => $hashes['salt'],
                     ':hash' => $hash_code
@@ -116,7 +158,7 @@ class User
         
         if (!$mail->send()) {
           $this->db->rollback();
-          throw new \Exception("Can't send email to: " . $email, 1);
+          throw new \Exception("Can't send email to: " . $this->$email, 1);
         }
 
         return $result;

@@ -171,10 +171,10 @@ class AuthorizationAjaxRequest extends AjaxRequest
       return;
     }
     
-    $user = new Auth\User();
+    $user = new Auth\User($email);
     
     try {
-      $new_user_id = $user->refreshPassword($email, $password1);
+      $new_user_id = $user->refreshPassword($password1);
     } catch (\Exception $e) {
       $this->setFieldError("email", $e->getMessage());
       return;
