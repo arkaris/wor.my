@@ -6,6 +6,7 @@
 switch ($_SERVER['PHP_SELF']) {
   case '/reg.php':
     echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';
+    echo '<script src="/js/validator.js"></script>';
     echo '<script src="./js/ajax-form.js"></script>';
     echo '<script src="./js/href_extender.js"></script>';
     echo '<script src="./js/showMe.js"></script>';

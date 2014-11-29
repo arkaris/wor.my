@@ -88,7 +88,7 @@
         initHandler: function() {
             this.$forms.submit(function() {
                 var $_this = $(this);
-                var result = script.ajaxform.validate($_this);
+                var result = script.ajaxform.validate(this);
 
                 if (result === true) {
                     script.ajaxform.go($_this);
@@ -113,32 +113,8 @@
             }
         },
 
-        validate: function($form) {
-            var $fields = $form.find(':input'),
-                $messages = $form.find("[data-error]"),
-                isValid = true,
-                $e;
-/*
-            $fields.each(function(i, e) {
-                $(e).removeClass('error-message');
-            });
-*/
-            $messages.each(function(i, e) {
-              $(e).html("");
-            });
-/*
-            $form.find('.error-message').remove();
-*/
-            $fields.each(function(i, e) {
-                if (e.hasAttribute('required')) {
-                    $e = $(e);
-                    if (!$e.val().trim()) {
-                        $e/*.addClass('error-message')*/.focus();
-                        isValid = false;
-                        return isValid;
-                    }
-                }
-            });
+        validate: function(form) {
+            var isValid = form.validate();
             return isValid;
         },
 

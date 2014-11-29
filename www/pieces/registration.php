@@ -2,14 +2,14 @@
   <div class="auth_block clearfix">
     <div class="login">
       <div class="local_header"><h3>Вход</h3></div>
-      <form class="ajax" method="post" action="./ajax.php">
+      <form class="ajax" method="post" action="./ajax.php" name="authorization">
         <input type="hidden" name="act" value="login">
         <div>
           <div class="field">
             <div class="label"><label for="c890_email">Email</label></div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input value="" name="email" id="c890_email" type="text"></span>
+                <input value="" name="email" id="c890_email" type="text" data-email required></span>
               <span class="field_error" data-error="email"></span>
             </div>
           </div>
@@ -17,7 +17,7 @@
           <div class="label"><label for="c890_password">Пароль</label></div>
           <div class="input">
             <span class="round_input" data-editor="">
-              <input name="password" id="c890_password" type="password" ></span>
+              <input name="password" id="c890_password" type="password" data-minln=6 data-maxln=16 data-lat required></span>
             <span class="field_error" data-error="password"></span>
           </div>
           </div>
@@ -31,7 +31,7 @@
       <div class="local_header">
         <h3>Регистрация</h3>
       </div>
-      <form class="ajax" method="post" action="./ajax.php">
+      <form class="ajax" method="post" action="./ajax.php" name="registration">
         <div class="main-error alert alert-error hide"></div>
         <input type="hidden" name="act" value="register">
         <div>
@@ -41,7 +41,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input value="" name="username" id="c875_username" type="text"></span>
+                <input value="" name="username" id="c875_username" type="text" data-minln=3 data-maxln=16 required></span>
               <span class="field_error" data-error="username"></span>
             </div>
           </div>
@@ -51,7 +51,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input value="" name="email" id="c875_email" type="text"></span>
+                <input value="" name="email" id="c875_email" type="text" data-email required></span>
               <span class="field_error" data-error="email"></span>
             </div>
           </div>
@@ -61,7 +61,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input value="" name="phone" id="c875_phone" type="text"></span>
+                <input value="" name="phone" id="c875_phone" type="text" data-phone></span>
               <span class="field_error" data-error="phone"></span>
             </div>
           </div>
@@ -71,7 +71,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input name="password1" id="c875_password1" type="password"></span>
+                <input name="password1" id="c875_password1" type="password" data-minln=6 data-maxln=16 data-lat required></span>
               <span class="field_error" data-error="password1"></span>
             </div>
           </div>
@@ -81,7 +81,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input name="password2" id="c875_password2" type="password"></span>
+                <input name="password2" id="c875_password2" type="password" data-minln=6 data-maxln=16 data-lat required data-compare="password1"></span>
               <span class="field_error" data-error="password2"></span>
             </div>
           </div>
@@ -97,7 +97,7 @@
       <div class="local_header">
         <h3>Восстановление пароля</h3>
       </div>
-      <form class="ajax" method="post" action="./ajax.php">
+      <form class="ajax" method="post" action="./ajax.php" name="password_change">
         <div class="main-error alert alert-error hide"></div>
         <input type="hidden" name="act" value="forgotPass">
         <div>
@@ -107,7 +107,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input value="" name="email" id="c875_email" type="text"></span>
+                <input value="" name="email" id="c875_email" type="text" data-email required></span>
               <span class="field_error" data-error="email"></span>
             </div>
           </div>
@@ -117,7 +117,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input name="password1" id="c875_password1" type="password"></span>
+                <input name="password1" id="c875_password1" type="password" data-minln=6 data-maxln=16 data-lat required></span>
               <span class="field_error" data-error="password1"></span>
             </div>
           </div>
@@ -127,7 +127,7 @@
             </div>
             <div class="input">
               <span class="round_input" data-editor="">
-                <input name="password2" id="c875_password2" type="password"></span>
+                <input name="password2" id="c875_password2" type="password" data-minln=5 data-maxln=16 data-lat required data-compare="password1"></span>
               <span class="field_error" data-error="password2"></span>
             </div>
           </div>
