@@ -112,7 +112,7 @@ class User
     }
     
     public function refreshPassword($password) {
-      $user_exists = $this->getSalt($this->$email);
+      $user_exists = $this->getSalt($this->email);
       
       if (!$user_exists) {
         throw new \Exception("User not exists: " . $this->$email, 1);
@@ -135,7 +135,7 @@ class User
             $this->db->beginTransaction();
             $result = $sth->execute(
                 array(
-                    ':email' => $this->$email,
+                    ':email' => $this->email,
                     ':password' => $hashes['hash'],
                     ':salt' => $hashes['salt'],
                     ':hash' => $hash_code
