@@ -115,7 +115,7 @@ class User
       $user_exists = $this->getSalt($this->email);
       
       if (!$user_exists) {
-        throw new \Exception("User not exists: " . $this->$email, 1);
+        throw new \Exception("User not exists: " . $this->email, 1);
       }
       
       $query = 'replace into forgot_pass (email, password, salt, hash)
@@ -126,13 +126,14 @@ class User
         $hash_code = rand(100000000, 999999999);
         $sub = 'forgot_password';
         $mailParams = array(
-          to => $email,
+          to => $this->email,
           hash_code => $hash_code
         );
         $mail = new \Mail\EasyMail($sub, $mailParams);
 
         try {
             $this->db->beginTransaction();
+            
             $result = $sth->execute(
                 array(
                     ':email' => $this->email,
@@ -141,13 +142,17 @@ class User
                     ':hash' => $hash_code
                 )
             );
-            
-            $this->db->commit();
-            
         } catch (\PDOException $e) {
             $this->db->rollback();
             echo "Database error: " . $e->getMessage();
             die();
+        }
+        
+        if (!$mail->send()) {
+            $this->db->rollback();
+            throw new \Exception("Can't send email to: " . $this->email, 1);
+        } else {
+           $this->db->commit();
         }
 
         if (!$result) {
@@ -156,10 +161,7 @@ class User
             die();
         }
         
-        if (!$mail->send()) {
-          $this->db->rollback();
-          throw new \Exception("Can't send email to: " . $this->$email, 1);
-        }
+        
 
         return $result;
     }
