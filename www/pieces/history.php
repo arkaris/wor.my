@@ -13,8 +13,9 @@ if (isset($sched)) {
     }
     unset($rvalue);
     
+    $tmp = $value['rstatus'] ? ' enabled' : ' disabled';
     echo '<div class="clearfix main_quest_list">';
-      echo "<div class='quest_mini_card'>";
+      echo "<div class='quest_mini_card$tmp' onclick=hrefExtend(this)>";
         echo '<div class="unblur" style="background-image: url(\''.$room['rimg'].'\');"></div>';
         echo '<div class="frame">';
           echo '<div class="gamers_count">';
