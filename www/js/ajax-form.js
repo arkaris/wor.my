@@ -114,7 +114,7 @@
         },
 
         validate: function(form) {
-            var isValid = form.validate();
+            var isValid = form.validate?form.validate():true;
             return isValid;
         },
 
