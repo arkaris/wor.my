@@ -234,18 +234,14 @@ class User
     public function saveSession($remember = true, $http_only = false, $days = 7)
     {
         $_SESSION["user_id"] = $this->user_id;
-
-        if ($remember) {
-            // Save session id in cookies
-            $sid = session_id();
-
-            $expire = time() + $days * 24 * 3600;
-            $domain = ""; // default domain
-            $secure = false;
-            $path = "/";
+          // Save session id in cookies
+          $sid = session_id();
+          $expire = $remember?time() + $days * 24 * 3600:time(0);
+          $domain = ""; // default domain
+          $secure = false;
+          $path = "/";
 
             $cookie = setcookie("sid", $sid, $expire, $path, $domain, $secure, $http_only);
-        }
     }
 
     public function create($email, $password, $username, $phone = null) {

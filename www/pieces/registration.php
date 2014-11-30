@@ -14,16 +14,24 @@
             </div>
           </div>
           <div class="field">
-          <div class="label"><label for="c890_password">Пароль</label></div>
-          <div class="input">
-            <span class="round_input" data-editor="">
-              <input name="password" id="c890_password" type="password" data-minln=6 data-maxln=16 data-lat required></span>
-            <span class="field_error" data-error="password"></span>
+            <div class="label"><label for="c890_password">Пароль</label></div>
+            <div class="input">
+              <span class="round_input" data-editor="">
+                <input name="password" id="c890_password" type="password" data-minln=6 data-maxln=16 data-lat required></span>
+              <span class="field_error" data-error="password"></span>
+            </div>
           </div>
-          </div>
+          
+         
+            <div class="label"><label>Запомнить</label></div>
+            
+                <input name="remember-me" type="checkbox" checked="checked"></span>
+              
         </div>
+       
+        
         <a href=# onclick=switchHide(this)>Восстановить пароль</a>
-        <button type="submit" class="round_button" onclick = false>Войти</button>
+        <input type="submit" class="round_button" onclick=false value="Войти">
       </form>
     </div>
     

@@ -332,7 +332,7 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 .password_reset {
     text-align: center;
 }
-.password_reset input, .password_reset .round_button, .delivery_form input, .delivery_form .round_button, .profile input, .auth_block .round_button, .auth_block input {
+.password_reset input, .password_reset .round_button, .delivery_form input, .delivery_form .round_button, .profile input, .auth_block .round_button, .auth_block input:not([type="checkbox"]) {
     width: 20em;
 }
 .password_reset .round_button, .profile .round_button, .auth_block .round_button, .delivery_form .round_button {
@@ -398,9 +398,6 @@ position: relative; z-index: 3; border: 2px solid rgb(255, 255, 255); transition
 
 .password_reset .round_button, .auth_block .registration .round_button {
     margin-left: 7em;
-}
-.password_reset input, .password_reset .round_button, .delivery_form input, .delivery_form .round_button, .profile input, .auth_block .round_button, .auth_block input {
-    width: 20em;
 }
 .password_reset .round_button, .profile .round_button, .auth_block .round_button, .delivery_form .round_button {
     margin-top: 1em;
