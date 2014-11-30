@@ -85,14 +85,14 @@
                   echo '<div class="timeslots" rid='.$rvalue['rid'].'>';
                   foreach ($sched->day as $dvalue) {
                     if ($dvalue['rid'] == $rvalue['rid']) {
-                      $left = date('B', $dvalue['time'] +10800)/10;
+                      $left = date('B', $dvalue['time'] +7200)/10;
                       echo '<div class="slot round_button'.$dvalue['book'].'" time='.$dvalue['time'].' style="left: '.$left.'%; width: 4.12%;">'.date('H:i', $dvalue['time']).'</div>';
                     }
                   }
                   echo '</div><div class="pricelines">';
                   foreach ($sched->day as $dvalue) {
                     if ($dvalue['rid'] == $rvalue['rid']) {
-                      $left = date('B', $dvalue['time'] +10800)/10;
+                      $left = date('B', $dvalue['time'] +7200)/10;
                       echo '<div class="slot'.$dvalue['book'].'" style="left: '.$left.'%; width: 4.12%; text-align: center;">'.$dvalue['price'].'р</div>';
                     }
                   }
