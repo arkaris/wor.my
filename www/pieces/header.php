@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Мир комнат</title>
+  <link rel="shortcut icon" href="../img/2.png">
   <meta name="description" content="">
   <meta name="viewport" content="width=900, maximum-scale=0.8, minimum-scale=0.2, user-scalable=yes">
   <?php
